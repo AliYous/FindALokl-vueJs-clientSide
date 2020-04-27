@@ -40,9 +40,6 @@ export default {
 </script>
 
 <style scoped>
-	.header {
-		margin-top: 1.5rem;
-	}
 
 	.logo {
 		text-transform: uppercase;
