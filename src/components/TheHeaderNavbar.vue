@@ -1,18 +1,36 @@
 <template>
-		<div id="nav">
-			<nav>
-				<div class="logo">
-					<h4>TheNav</h4>
-				</div>
-				<ul class="nav-links">
-					<li><a class="btn btn-link" href="#">About this project</a></li>
-					<div class="btn-connect">
-						<li><a class="btn btn-outline-secondary" href="#">CONNECT</a></li>
-						<li><a class="btn btn-primary btn-sign-up" href="#">Sign Up as Local</a></li>
+	<div class="header">		
+		<v-card
+			color="white"
+			flat
+		>
+			<v-toolbar flat dense>
+				<v-toolbar-title class="logo">FindaLokl</v-toolbar-title>
+
+				<v-spacer></v-spacer>
+
+				<div class="nav-links">
+					<v-btn text>
+						About the project
+					</v-btn>
+					
+					<div class="btn-connect-sign">
+						<v-btn class="btn-connect" outlined >
+							Connect
+						</v-btn>
+						<v-btn class="btn-sign-up" dark color="#F38633">
+							Sign Up as a local
+						</v-btn>
 					</div>
-				</ul>
-			</nav>
-		</div>
+				</div>
+				<div class="burger">
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+				</div>
+			</v-toolbar>
+		</v-card>
+	</div>
 </template>
 
 <script>
@@ -22,53 +40,88 @@ export default {
 </script>
 
 <style scoped>
-	nav {
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		min-height: 8vh;
-		background-color: #FFFFFF;
+	.header {
+		margin-top: 1.5rem;
 	}
+
 	.logo {
-		color: rgb(235, 233, 233);
 		text-transform: uppercase;
 		letter-spacing: 3px;
-		font-size: 20px;
+		font-size: 22px;
+		margin-left: 3rem;
 		color: #F38633;
 	}
 
-	ul {
-		list-style-type: none;
-	}
 	.nav-links {
 		display: flex;
 		justify-content: space-around;
-		min-width: 35%;
+		min-width: 50%;
 	}
-	.nav-links a {
-		color: rgb(235, 233, 233);
-		letter-spacing: 3px;
-		font-weight: bold;
-		font-size: 14px;
-	}
-
-	.btn-primary {
-		background-color: #F38633 !important;
-		color: white !important;
-	}
-	.btn-outline-secondary {
-		color: #8E8888 !important;
-	}
-	.btn-link {
-		color: #8E8888 !important;
-		margin-left: 4.5rem;
-	}
-
-	.btn-connect {
+	
+	.btn-connect-sign {
 		display: flex;
+		justify-content: space-between;
 		width: 20rem;
-		justify-content: space-around;
-
 	}
+	.btn-connect {
+		right: 1rem;
+		left: 1rem;
+	}
+	.btn-sign-up {
+		left: 0.5rem;
+	}
+
+	.burger {
+		display: none;
+		cursor: pointer;
+	}
+
+	.burger div {
+		width: 25px;
+		height: 3px;
+		background-color: black;
+		margin: 5px;
+	}
+
+	@media screen and (max-width: 768px) {
+		.logo {
+			text-transform: uppercase;
+			letter-spacing: 3px;
+			font-size: 22px;
+			margin-left: 3rem;
+			color: #F38633;
+		}
+
+		.nav-links {
+			position: absolute;
+			right: 0px;
+			height: 92vh;
+			top: 8vh;
+			background-color: #FFFFFF;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: #f7e9e9 !important;
+			width: 50%;
+			/* transform: translateX(100%);
+			transition: transform 0.5s ease-in; */
+		}		
+		.btn-connect-sign {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 60%;
+		}
+
+		/* .nav-links li {
+			opacity: 0;
+		} */
+		.burger {
+			display: block;
+			/* margin-left: 90%; */
+		}
+	}
+
+
 
 </style>
