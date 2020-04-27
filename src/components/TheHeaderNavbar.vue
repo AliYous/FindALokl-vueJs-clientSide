@@ -1,51 +1,18 @@
 <template>
-  <v-card class="overflow-hidden">
-    <v-app-bar
-      absolute
-      color="#fcb69f"
-      dark
-      shrink-on-scroll
-      src="https://picsum.photos/1920/1080?random"
-      scroll-target="#scrolling-techniques-2"
-    >
-      <template v-slot:img="{ props }">
-        <v-img
-          v-bind="props"
-          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
-        ></v-img>
-      </template>
-
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Title</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-sheet
-      id="scrolling-techniques-2"
-      class="overflow-y-auto"
-      max-height="600"
-    >
-      <v-container style="height: 1000px;"></v-container>
-    </v-sheet>
-  </v-card>
-
-
-   <!-- <div id="nav">
-      <router-link to="/about">About</router-link>
-    </div> -->
+		<div id="nav">
+			<nav>
+				<div class="logo">
+					<h4>TheNav</h4>
+				</div>
+				<ul class="nav-links">
+					<li><a class="btn btn-link" href="#">About this project</a></li>
+					<div class="btn-connect">
+						<li><a class="btn btn-outline-secondary" href="#">CONNECT</a></li>
+						<li><a class="btn btn-primary btn-sign-up" href="#">Sign Up as Local</a></li>
+					</div>
+				</ul>
+			</nav>
+		</div>
 </template>
 
 <script>
@@ -54,6 +21,54 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+	nav {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		min-height: 8vh;
+		background-color: #FFFFFF;
+	}
+	.logo {
+		color: rgb(235, 233, 233);
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-size: 20px;
+		color: #F38633;
+	}
+
+	ul {
+		list-style-type: none;
+	}
+	.nav-links {
+		display: flex;
+		justify-content: space-around;
+		min-width: 35%;
+	}
+	.nav-links a {
+		color: rgb(235, 233, 233);
+		letter-spacing: 3px;
+		font-weight: bold;
+		font-size: 14px;
+	}
+
+	.btn-primary {
+		background-color: #F38633 !important;
+		color: white !important;
+	}
+	.btn-outline-secondary {
+		color: #8E8888 !important;
+	}
+	.btn-link {
+		color: #8E8888 !important;
+		margin-left: 4.5rem;
+	}
+
+	.btn-connect {
+		display: flex;
+		width: 20rem;
+		justify-content: space-around;
+
+	}
 
 </style>
