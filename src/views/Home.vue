@@ -6,9 +6,7 @@
       <div class="header-search">
         <h1>Find a Lokl</h1>
         <h3>To show you around</h3>
-
         <TheSearchBar />
-
       </div>
     </div>
 
@@ -35,6 +33,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
+
   .container-header {
     position: absolute;
     width: 100%;
@@ -54,9 +54,14 @@ export default {
       font-weight: bold;
   }
   h1 {
-    font-size: 40px;
+      font-family: 'Poppins:ital';
+      font-size: 50px;
   }
-  
+  h2 {
+      font-family: 'Poppins:ital';
+      font-size: 30px;
+  }
+
   .how-it-works-container {
     position: absolute;
     display: flex;
