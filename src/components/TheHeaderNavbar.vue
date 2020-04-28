@@ -7,8 +7,7 @@
 				flat
 			>
 				<v-toolbar flat dense>
-					<v-toolbar-title class="logo">FindaLokl</v-toolbar-title>
-
+					<v-toolbar-title class="logo" @click="homeRedirect">FindaLokl</v-toolbar-title>
 					<v-spacer></v-spacer>
 
 					<div class="nav-links">
@@ -60,6 +59,10 @@ export default {
 		}
 	},
 	methods: {
+		homeRedirect() {
+			this.$router.push({ name: "Home" })
+		},
+
 		onConnectClick() {
 			bus.$emit('dialog', true, false) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
 		},
@@ -84,6 +87,9 @@ export default {
 		font-size: 22px;
 		margin-left: 3rem;
 		color: #F38633;
+	}
+	.logo:hover {
+		cursor: pointer;
 	}
 
 	.nav-links {
