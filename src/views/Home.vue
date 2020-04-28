@@ -3,7 +3,15 @@
 
     <div class="container-header">
       <!--  Image css  -->
+      <div class="header-search">
+        <h1>Find a Lokl</h1>
+        <h3>To show you around</h3>
+
+        <TheSearchBar />
+
+      </div>
     </div>
+
 
     <div class="how-it-works-container">
       <HowItWorks />
@@ -14,11 +22,14 @@
 
 <script>
 import HowItWorks from '../components/HowItWorks'
+import TheSearchBar from '../components/TheSearchBar'
+
 
 export default {
   name: 'Home',
   components: {
-    HowItWorks
+    HowItWorks,
+    TheSearchBar
   }
 }
 </script>
@@ -31,7 +42,20 @@ export default {
     background-image: url("../assets/header-img4.jpg");
     background-size: cover;
     background-position-y: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
   } 
+  .header-search {
+      width: 40%;
+      color: white;
+      text-align: left;
+      font-weight: bold;
+  }
+  h1 {
+    font-size: 40px;
+  }
   
   .how-it-works-container {
     position: absolute;
@@ -42,8 +66,6 @@ export default {
     height: 30rem;
     width: 100%;
   }
-
-
   
   @media screen and (max-width: 768px) {
     .img-header {

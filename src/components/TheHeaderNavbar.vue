@@ -11,7 +11,7 @@
 
 				<div class="nav-links">
 					<v-btn text>
-						About the project
+						About this project
 					</v-btn>
 					
 					<div class="btn-connect-sign">
@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+	.header {
+		padding-top: 1rem;
+	}
 
 	.logo {
 		text-transform: uppercase;
