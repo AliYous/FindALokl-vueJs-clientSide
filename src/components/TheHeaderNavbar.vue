@@ -20,7 +20,11 @@
 							<v-btn @click.prevent="onConnectClick()" class="btn-connect" outlined >
 								Connect
 							</v-btn>
-							<v-btn class="btn-sign-up" dark color="#F38633">
+							
+							<!-- 
+								The signup will actually redirect to the locals landing page
+							-->
+							<v-btn @click.prevent="onSignUpClick()" class="btn-sign-up" dark color="#F38633">
 								Sign Up as a local
 							</v-btn>
 						</div>
@@ -57,7 +61,10 @@ export default {
 	},
 	methods: {
 		onConnectClick() {
-			bus.$emit('dialog', true) // emit the event to the bus
+			bus.$emit('dialog', true, false) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
+		},
+		onSignUpClick() {
+			bus.$emit('dialog', true, true) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
 		}
 	}
 }
