@@ -2,6 +2,7 @@
 	<div class="header">		
 		<v-card
 			color="white"
+			height="6vh"
 			flat
 		>
 			<v-toolbar flat dense>
@@ -42,6 +43,9 @@ export default {
 <style scoped>
 	.header {
 		padding-top: 1rem;
+		position: fixed;
+		z-index: 1;
+		width: 100%;
 	}
 
 	.logo {

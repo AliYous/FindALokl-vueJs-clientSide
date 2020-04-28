@@ -1,9 +1,11 @@
 <template>
   <v-app>
     <!-- Header nav component  -->
-    <TheHeaderNavbar/>
+    <!-- <div class="fixed-header"> -->
+      <TheHeaderNavbar/>
+    <!-- </div> -->
     
-    <v-content>
+    <v-content class="content-container">
       <!-- <AllComponents/> -->
       <router-view />
     </v-content>
@@ -33,5 +35,18 @@ export default {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins';
+  }
+
+  .fixed-header {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    z-index: 5;
+    width: 100%;
+  }
+
+  .content-container {
+    margin-top: 6.5vh;
+    z-index: 0;
   }
 </style>
