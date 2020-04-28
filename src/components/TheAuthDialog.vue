@@ -2,6 +2,8 @@
 	<v-dialog v-model="dialog" max-width="800">
 		<div class="container-fluid">
 			<v-card  class="mx-auto card" max-width="700">
+
+				<v-icon color="black" class="close-cross" @click="closeDialog">mdi-close-circle</v-icon>
 				
 				<h1 v-if="!userExists && registerAsLocal">Register As Local</h1>
 				<h1 v-if="!userExists && !registerAsLocal">Register</h1>
@@ -52,10 +54,8 @@
 						@keypress.enter="onSignUp"
 						></v-text-field>
 
-						<v-btn v-if="!userExists" color="#F38633" :loading='loading' rounded large dark @click="onSignUp">register</v-btn>
-						<v-btn v-if="userExists" color="#F38633" :loading='loading' rounded large dark @click="onSignIn">Sign in</v-btn>
-
-
+						<v-btn v-if="!userExists" color="#F38633" :loading='loading' rounded x-large dark @click="onSignUp">Register</v-btn>
+						<v-btn v-if="userExists" color="#F38633" :loading='loading' rounded x-large dark @click="onSignIn">Sign in</v-btn>
 					</form>
 
 					<a v-if="!userExists" @click="changeUserExistsBool" role="button" class="already-member-text">Already a member?</a>
@@ -67,15 +67,17 @@
 </template>
 
 <script>
-	import {bus} from '../main'   
+	import {bus} from '../main';
+	import { mapActions } from 'vuex';
 
 	export default {
 		name: 'TheAuthDialog',
 		created () {
 			var vm = this
-			bus.$on('dialog', function (showDialog, registerAsLocal) {
+			bus.$on('dialog', function (showDialog, registerAsLocal, userExists) {
 			vm.dialog = showDialog;
 			vm.registerAsLocal = registerAsLocal;
+			vm.userExists = userExists;
 			})
 		},
 		data() {
@@ -83,47 +85,53 @@
 				dialog: false,
 				form: {
 					first_name: '',
-					email: '', //this.$props.emailInput,
+					email: '', 
 					password: '',
 					password_confirmation: ''
 				},
-				userExists: false, //this.$props.userExistsProps,
-				loading: false, // for adding loading animation to submit btn
+				userExists: true,
+				loading: false,
 				registerAsLocal: false,
 				error: null
 			}
 		},
 		methods: {
-			onSignIn() {
+			...mapActions(['login', 'register']),
+
+			async onSignIn() {
+				this.loading = true;
 				let email = this.form.email;
-            	let password = this.form.password;
-            	this.$store
-					.dispatch("login", { email, password })
-					.then(() => this.$router.push("/"))
-					.catch(err => console.log(err));
+				let password = this.form.password;
+				this.login({email, password}).then(() => {
+					this.loading = false;
+					this.dialog = false;
+				})
 			},
 			onSignUp() {
-				console.log("Signup")
+				this.loading = true;
+				const data = {
+					name: this.form.first_name,
+					email: this.form.email,
+					password: this.form.password,
+					isLocal: this.registerAsLocal
+				};
+				this.register(data).then(() => {
+					this.loading = false;
+					this.userExists = true;
+				});
 			},
 			changeUserExistsBool() {
-				this.userExists = !this.userExists
+				this.userExists = !this.userExists;
 			},
+			closeDialog() {
+				this.dialog = false;
+			}
 		}
 	}
 </script>
 
 <style scoped>
 
-	.image-container {
-		position: absolute;
-		min-width: 20%;
-		top: 3.9em;
-		right: -2em;
-	} 
-	img {
-		height: auto;
-		width: 100%;
-	}
 
 	.container-fluid {
 		display: flex;
@@ -139,6 +147,15 @@
 	.card {
 		padding: 1em;
 		width: 100%;
+	}
+
+	.close-cross {
+		top: 0;
+		margin-left: 95%;
+		font-size: 25px;
+	}
+	.close-cross:hover {
+		cursor: pointer;
 	}
 
 	h1 {
@@ -157,6 +174,9 @@
 
 	.already-member-text:hover {
 		text-decoration: underline;
+	}
+	.already-member-text {
+		font-size: 20px;
 	}
 	
 	.error {

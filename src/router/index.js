@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BrowseLocals from '../views/BrowseLocals.vue'
+import LocalsLandingPage from '../views/LocalsLandingPage'
+
 
 Vue.use(VueRouter)
 
@@ -15,6 +17,11 @@ Vue.use(VueRouter)
     path: '/locals',
     name: 'BrowseLocals',
     component: BrowseLocals
+  },
+  {
+    path: '/become-a-local',
+    name: 'LocalsLandingPage',
+    component: LocalsLandingPage
   }
 ]
 

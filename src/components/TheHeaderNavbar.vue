@@ -15,7 +15,7 @@
 							About this project
 						</v-btn>
 
-						<v-btn text v-if="isLoggedIn">Logout</v-btn>
+						<v-btn text v-if="isLoggedIn" @click.prevent="logout">Logout</v-btn>
 
 						<span v-else>	
 							<div class="btn-connect-sign">
@@ -48,8 +48,9 @@
 </template>
 
 <script>
-import TheAuthDialog from '../components/TheAuthDialog'
-import { bus } from '../main'
+import TheAuthDialog from '../components/TheAuthDialog';
+import { mapGetters, mapActions } from 'vuex';
+import { bus } from '../main';
 
 export default {
 	name: "TheHeaderNavbar",
@@ -63,20 +64,23 @@ export default {
 		}
 	},
 	computed: {
+		...mapGetters({ userLoggedIn: 'isLoggedIn'}),
 		isLoggedIn() {
-          return this.$store.getters.isLoggedIn;
+          return this.userLoggedIn;
         }
 	},
 	methods: {
+		...mapActions(['logout']),
+
 		homeRedirect() {
 			this.$router.push({ name: "Home" })
 		},
 
 		onConnectClick() {
-			bus.$emit('dialog', true, false) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
+			bus.$emit('dialog', true, false, true) //See definition in Auth component
 		},
 		onSignUpClick() {
-			bus.$emit('dialog', true, true) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
+			this.$router.push({name: 'LocalsLandingPage'});
 		}
 	}
 }
