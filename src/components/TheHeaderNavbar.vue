@@ -1,42 +1,65 @@
 <template>
-	<div class="header">		
-		<v-card
-			color="white"
-			height="6vh"
-			flat
-		>
-			<v-toolbar flat dense>
-				<v-toolbar-title class="logo">FindaLokl</v-toolbar-title>
+	<div>
+		<div class="header">		
+			<v-card
+				color="white"
+				height="6vh"
+				flat
+			>
+				<v-toolbar flat dense>
+					<v-toolbar-title class="logo">FindaLokl</v-toolbar-title>
 
-				<v-spacer></v-spacer>
+					<v-spacer></v-spacer>
 
-				<div class="nav-links">
-					<v-btn text>
-						About this project
-					</v-btn>
-					
-					<div class="btn-connect-sign">
-						<v-btn class="btn-connect" outlined >
-							Connect
+					<div class="nav-links">
+						<v-btn text>
+							About this project
 						</v-btn>
-						<v-btn class="btn-sign-up" dark color="#F38633">
-							Sign Up as a local
-						</v-btn>
+						
+						<div class="btn-connect-sign">
+							<v-btn @click.prevent="onConnectClick()" class="btn-connect" outlined >
+								Connect
+							</v-btn>
+							<v-btn class="btn-sign-up" dark color="#F38633">
+								Sign Up as a local
+							</v-btn>
+						</div>
 					</div>
-				</div>
-				<div class="burger">
-					<div class="line"></div>
-					<div class="line"></div>
-					<div class="line"></div>
-				</div>
-			</v-toolbar>
-		</v-card>
+					<div class="burger">
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+					</div>
+				</v-toolbar>
+			</v-card>
+		</div>
+
+		<TheAuthDialog />
+
 	</div>
+	
 </template>
 
 <script>
+import TheAuthDialog from '../components/TheAuthDialog'
+import { bus } from '../main'
+
 export default {
-    name: "TheHeaderNavbar"
+	name: "TheHeaderNavbar",
+	components: {
+		TheAuthDialog
+	},
+	data() {
+		return {
+			showAuthDialog: false,
+			localSignupDialog: false // Will be used as a prop to the auth component to know if we sign up as user or local
+		}
+	},
+	methods: {
+		onConnectClick() {
+			bus.$emit('dialog', true) // emit the event to the bus
+		}
+	}
 }
 </script>
 

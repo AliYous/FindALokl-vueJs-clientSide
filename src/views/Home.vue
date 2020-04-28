@@ -23,12 +23,13 @@ import HowItWorks from '../components/HowItWorks'
 import TheSearchBar from '../components/TheSearchBar'
 
 
+
 export default {
   name: 'Home',
   components: {
     HowItWorks,
     TheSearchBar
-  }
+  },
 }
 </script>
 
