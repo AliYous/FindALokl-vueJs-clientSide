@@ -5,9 +5,18 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from 'axios';
 
 Vue.config.productionTip = false
 
+// Axios config
+Vue.prototype.$http = Axios;
+const token = localStorage.getItem('token');
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+
+// bus used to emit to the auth dialog from TheHeaderNavbar
 export const bus = new Vue()
 
 new Vue({

@@ -95,7 +95,12 @@
 		},
 		methods: {
 			onSignIn() {
-				console.log("SignIn")
+				let email = this.form.email;
+            	let password = this.form.password;
+            	this.$store
+					.dispatch("login", { email, password })
+					.then(() => this.$router.push("/"))
+					.catch(err => console.log(err));
 			},
 			onSignUp() {
 				console.log("Signup")

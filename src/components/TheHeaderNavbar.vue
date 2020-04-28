@@ -14,19 +14,23 @@
 						<v-btn text>
 							About this project
 						</v-btn>
-						
-						<div class="btn-connect-sign">
-							<v-btn @click.prevent="onConnectClick()" class="btn-connect" outlined >
-								Connect
-							</v-btn>
-							
-							<!-- 
-								The signup will actually redirect to the locals landing page
-							-->
-							<v-btn @click.prevent="onSignUpClick()" class="btn-sign-up" dark color="#F38633">
-								Sign Up as a local
-							</v-btn>
-						</div>
+
+						<v-btn text v-if="isLoggedIn">Logout</v-btn>
+
+						<span v-else>	
+							<div class="btn-connect-sign">
+								<v-btn @click.prevent="onConnectClick()" class="btn-connect" outlined >
+									Connect
+								</v-btn>
+								
+								<!-- 
+									The signup will actually redirect to the locals landing page
+								-->
+								<v-btn @click.prevent="onSignUpClick()" class="btn-sign-up" dark color="#F38633">
+									Sign Up as a local
+								</v-btn>
+							</div>
+						</span>
 					</div>
 					<div class="burger">
 						<div class="line"></div>
@@ -57,6 +61,11 @@ export default {
 			showAuthDialog: false,
 			localSignupDialog: false // Will be used as a prop to the auth component to know if we sign up as user or local
 		}
+	},
+	computed: {
+		isLoggedIn() {
+          return this.$store.getters.isLoggedIn;
+        }
 	},
 	methods: {
 		homeRedirect() {
