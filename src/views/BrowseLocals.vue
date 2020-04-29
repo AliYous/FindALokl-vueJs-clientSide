@@ -7,11 +7,9 @@
     </div>
 
     <div class="local-previews-list container-fluid">
-
-      <div class="local-previews-row row" v-for="local in locals" :key="local._id">
-          <LocalPreviewItem v-bind:local="local" />
-      </div>
-
+        <div class="local-previews-row row" v-for="local in locals" :key="local._id">
+            <LocalPreviewItem v-bind:local="local" />
+        </div>
     </div>
 
   </div>

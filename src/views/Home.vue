@@ -4,7 +4,6 @@
     <TheHeaderImgAndSearch v-bind:minified="false" />
     
 
-
     <div class="how-it-works-container">
       <HowItWorks />
     </div>
