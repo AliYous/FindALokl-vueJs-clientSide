@@ -43,7 +43,7 @@ export default {
     top: 1rem;
   } 
   .container-header-minified {
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 8rem;
         background-image: url("../assets/header-img4.jpg");
@@ -52,7 +52,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 1rem;
+        top: 5rem;
   }
   .header-search {
       width: 40%;
