@@ -1,20 +1,22 @@
 <template>
   <div>
-    <h1>Browse Locals Page</h1>
-    <h1>Browse Locals Page</h1>
-    <h1>Browse Locals Page</h1>
-    <h1>Browse Locals Page</h1>
-    <h1>Browse Locals Page</h1>
+    <TheHeaderImgAndSearch  v-bind:minified="true"/>
 
   </div>
 </template>
 
 <script>
+import TheHeaderImgAndSearch  from '../components/TheHeaderImgAndSearch'
+
 export default {
-  name: 'BrowseLocals'
+  name: 'BrowseLocals',
+  components: {
+    TheHeaderImgAndSearch
+  }
 
 }
 </script>
+
 
 <style scoped>
 

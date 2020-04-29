@@ -19,6 +19,7 @@
             x-large 
             dark 
             rounded
+            @click="browseLocals(city)"
         >
         Browse Locals
         </v-btn>
@@ -78,6 +79,10 @@ export default {
             this.city = city;
             console.log(city);
         },
+        browseLocals(city) {
+            console.log(city);
+            this.$router.push({ name: 'BrowseLocals'});
+        }
     }
 
 }
