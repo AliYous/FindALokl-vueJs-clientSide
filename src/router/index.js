@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BrowseLocals from '../views/BrowseLocals.vue'
 import LocalsLandingPage from '../views/LocalsLandingPage'
+import LocalProfileEdit from '../views/LocalProfileEdit'
+
 
 
 Vue.use(VueRouter)
@@ -22,6 +24,11 @@ Vue.use(VueRouter)
     path: '/become-a-local',
     name: 'LocalsLandingPage',
     component: LocalsLandingPage
+  },
+  {
+    path: '/local/edit',
+    name: 'LocalProfileEdit',
+    component: LocalProfileEdit
   }
 ]
 
