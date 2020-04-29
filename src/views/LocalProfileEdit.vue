@@ -23,18 +23,26 @@
                     rounded
                     label="First name"
                   ></v-text-field>
-                  <v-text-field class="text-field"
-                    prepend-inner-icon="mdi-map-marker-radius"
-                    v-model="form.localCity"
-                    required
-                    outlined
-                    color="#493E92"
-                    rounded
-                    label="Your city"
-                  ></v-text-field>
+
+                  <div class="search-container">
+                    <v-icon style="left:0.9rem;">mdi-map-search-outline</v-icon>
+                    <vue-google-autocomplete
+                      v-model="form.localCity"
+                      id="map"
+                      ref="citySearch"
+                      class="form-control autocomplete-bar"
+                      classname="form-control"
+                      placeholder="Your City"
+                      v-on:placechanged="getCity"
+                      types="(cities)"
+                    >
+                    </vue-google-autocomplete>
+                  </div>                 
+
                   <div class="quote-section">
                       <v-icon class="opening-quote">mdi-format-quote-open</v-icon>
                       <v-textarea
+                        v-model="form.quote"
                         prepend-inner-icon="mdi-comment-quote"
                         class="quote-field"
                         label="Your favorite quote"
@@ -48,26 +56,89 @@
               </form>
             </div>
         </div>
-
       </v-card>
+    </div>
+<!-- End of card -->
+
+
+    <div class="container profile-info-container">
+
+      <form class="form container">
+        <h4>I will show you ....</h4>
+         <v-textarea
+          v-model="form.tourDescription"
+          prepend-inner-icon="mdi-comment"
+          class="mx-2"
+          label="What will the tourists have the chance to enjoy during a tour with you?"
+          rows="3"
+        ></v-textarea>
+
+        <h4>About Me</h4>
+         <v-textarea
+          v-model="form.aboutMe"
+          prepend-inner-icon="mdi-comment"
+          class="mx-2"
+          label="Who are you? By letting them know what makes you special, it'll increase your chance of being booked by tourists that are made for you! "
+          rows="3"
+        ></v-textarea>
+
+        <h4>Your Hourly Rate</h4>
+        <v-text-field
+          v-model="form.hourlyRate"
+          label="How much do you want to be paid for showind people around your city ?"
+          value="10.00"
+          prefix="€"
+          suffix="per hour"
+        ></v-text-field>
+      </form>
+
+      <v-btn
+      dark
+      rounded
+      x-large
+      color="#F38633"
+      class="ma-0 btn-submit"
+      @click.prevent="onClickSubmit(form)"
+    >
+    Save changes
+    </v-btn> 
+
+
+
     </div>
       
   </div>
 </template>
 
 <script>
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
+
 export default {
     name: 'LocalProfileEdit',
+    components: {
+      VueGoogleAutocomplete
+    },
     data() {
       return {
         form : {
           name: '',
           localCity: '',
           quote: '',
-          about_me: '',
+          tourDescription: '',
+          aboutMe: '',
           languages: [],
           hourlyRate: null,
+          profile_isComplete: true // for now I return true, later we'll use it to verify if the profile is complete enough to apper in the LocalPreview browse
         }
+      }
+    },
+    methods: {
+      getCity(city) {
+        this.form.localCity = city;
+        console.log(city);
+      },
+      onClickSubmit(form) {
+        console.log(form)
       }
     }
 
@@ -97,6 +168,24 @@ export default {
     flex: 1 1 auto;
   }
 
+  .search-container {
+      display: flex;
+      justify-content: center;
+      align-content: flex-start;
+      /* background-color: black; */
+      height: 3.5rem;
+      margin-bottom: 1rem;
+  }
+  .autocomplete-bar {
+    /* margin: 0 0 0 -2rem; */
+    padding-left: 5rem;
+    min-height: 3.5rem;
+    border-radius: 5rem;
+    min-width: 100%;
+    color: #CED4DA;
+    border-color: #CED4DA;
+  }
+
   .quote-section {
     display: flex;
     position: relative;
@@ -113,8 +202,13 @@ export default {
     bottom: 1.5rem;
   }
 
+  .profile-info-container {
+    display: flex;
+    flex-direction: column;
+  }
 
-
-
+  .btn-submit {
+    margin-top: 5rem;
+  }
 
 </style>
