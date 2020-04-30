@@ -3,10 +3,10 @@
 		<div class="header">		
 			<v-card
 				color="white"
-				height="6vh"
+				height="8vh"
 				flat
 			>
-				<v-toolbar flat dense>
+				<v-toolbar flat dense style="padding-top:1rem">
 					<v-toolbar-title class="logo" @click="homeRedirect">FindaLokl</v-toolbar-title>
 					<v-spacer></v-spacer>
 
@@ -14,19 +14,23 @@
 						<v-btn text>
 							About this project
 						</v-btn>
-						
-						<div class="btn-connect-sign">
-							<v-btn @click.prevent="onConnectClick()" class="btn-connect" outlined >
-								Connect
-							</v-btn>
-							
-							<!-- 
-								The signup will actually redirect to the locals landing page
-							-->
-							<v-btn @click.prevent="onSignUpClick()" class="btn-sign-up" dark color="#F38633">
-								Sign Up as a local
-							</v-btn>
-						</div>
+
+						<v-btn text v-if="isLoggedIn" @click.prevent="logout">Logout</v-btn>
+
+						<span v-else>	
+							<div class="btn-connect-sign">
+								<v-btn @click.prevent="onConnectClick()" class="btn-connect" outlined >
+									Connect
+								</v-btn>
+								
+								<!-- 
+									The signup will actually redirect to the locals landing page
+								-->
+								<v-btn @click.prevent="onSignUpClick()" class="btn-sign-up" dark color="#F38633">
+									Sign Up as a local
+								</v-btn>
+							</div>
+						</span>
 					</div>
 					<div class="burger">
 						<div class="line"></div>
@@ -44,8 +48,9 @@
 </template>
 
 <script>
-import TheAuthDialog from '../components/TheAuthDialog'
-import { bus } from '../main'
+import TheAuthDialog from '../components/TheAuthDialog';
+import { mapGetters, mapActions } from 'vuex';
+import { bus } from '../main';
 
 export default {
 	name: "TheHeaderNavbar",
@@ -58,16 +63,24 @@ export default {
 			localSignupDialog: false // Will be used as a prop to the auth component to know if we sign up as user or local
 		}
 	},
+	computed: {
+		...mapGetters({ userLoggedIn: 'isLoggedIn'}),
+		isLoggedIn() {
+          return this.userLoggedIn;
+        }
+	},
 	methods: {
+		...mapActions(['logout']),
+
 		homeRedirect() {
 			this.$router.push({ name: "Home" })
 		},
 
 		onConnectClick() {
-			bus.$emit('dialog', true, false) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
+			bus.$emit('dialog', true, false, true) //See definition in Auth component
 		},
 		onSignUpClick() {
-			bus.$emit('dialog', true, true) // emit the event to the bus, 1st param always true, second param is true if the user wants to register as local
+			this.$router.push({name: 'LocalsLandingPage'});
 		}
 	}
 }
@@ -75,7 +88,6 @@ export default {
 
 <style scoped>
 	.header {
-		padding-top: 1rem;
 		position: fixed;
 		z-index: 1;
 		width: 100%;
