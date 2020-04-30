@@ -3,10 +3,10 @@
 		<div class="header">		
 			<v-card
 				color="white"
-				height="6vh"
+				height="8vh"
 				flat
 			>
-				<v-toolbar flat dense>
+				<v-toolbar flat dense style="padding-top:1rem">
 					<v-toolbar-title class="logo" @click="homeRedirect">FindaLokl</v-toolbar-title>
 					<v-spacer></v-spacer>
 
@@ -88,7 +88,6 @@ export default {
 
 <style scoped>
 	.header {
-		padding-top: 1rem;
 		position: fixed;
 		z-index: 1;
 		width: 100%;

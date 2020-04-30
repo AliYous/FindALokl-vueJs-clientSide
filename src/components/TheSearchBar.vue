@@ -65,7 +65,7 @@ export default {
     },
     data() {
         return {
-            city: '',
+            city: this.$store.state.citySearched || '',
             loading: false
         }
     },

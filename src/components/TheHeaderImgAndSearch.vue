@@ -57,7 +57,7 @@ export default {
   .header-search {
       width: 40%;
       color: white;
-      text-align: left;
+      text-align:center;
       font-weight: bold;
   }
   h1 {
