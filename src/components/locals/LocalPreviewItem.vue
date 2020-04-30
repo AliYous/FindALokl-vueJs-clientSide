@@ -1,6 +1,6 @@
 <template>
-      <div class="col-md-5 main" @click.prevent="onPreviewClick(localPreview.local_id)">
-          <div class="card">
+      <div class="main" @click.prevent="onPreviewClick(localPreview.local_id)">
+            <v-card raised width="65%">
                 <div class="card-horizontal">
                     <div class="img-square-wrapper">
                         <img class="" src="http://via.placeholder.com/200x200" alt="Card image cap">
@@ -16,7 +16,7 @@
                         <p class="card-text">{{ localPreview.quote }}</p>
                     </div>
                 </div>
-            </div>
+            </v-card>
        </div>
 </template>
 
@@ -35,12 +35,21 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
+
   .main:hover {
     cursor: pointer;
   }
-
-  .card {
-    width:40rem;
+  .main {
+    display: flex;
+    align-items: center;
+  }
+  .img-square-wrapper {
+    height: 200px;
+    width: 200px;
+  }
+  .card-title {
+    font-family: 'Poppins:ital';
   }
   .card-horizontal {
     display: flex;

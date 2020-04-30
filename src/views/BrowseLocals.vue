@@ -6,7 +6,7 @@
       <h4> Explore <u>{{ lastSearchInput }}</u>, with one of 722 Locals </h4>
     </div>
 
-    <LocalPreviewList />
+      <LocalPreviewList />
 
   </div>
 </template>
@@ -47,7 +47,6 @@ export default {
 
 
 <style scoped>
-
   .top-text {
     margin-top: 6.5rem;
     text-align: center;

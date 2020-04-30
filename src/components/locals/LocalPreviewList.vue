@@ -1,11 +1,9 @@
 <template>
-  <div class="main">
-    <div class="local-previews-list container-fluid">
-        <div class="local-previews-row row" v-for="localPreview in browseLocalsList" :key="localPreview._id">
+    <div class="local-previews-list container">
+        <div class="local-previews-row" v-for="localPreview in browseLocalsList" :key="localPreview._id">
             <LocalPreviewItem v-bind:localPreview="localPreview" />
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -40,13 +38,11 @@ export default {
   .local-previews-list {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     width: 90%;
     height: auto;
   }
   .local-previews-row {
-    display: flex;
     align-items: center;
-    justify-content:center;
   }
 </style>
