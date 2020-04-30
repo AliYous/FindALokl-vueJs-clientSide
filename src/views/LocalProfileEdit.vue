@@ -111,33 +111,52 @@
 
 <script>
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
+import axios from 'axios';
 
 export default {
     name: 'LocalProfileEdit',
+    props: ['local_id'],
     components: {
       VueGoogleAutocomplete
     },
     data() {
       return {
         form : {
-          name: '',
-          localCity: '',
-          quote: '',
-          tourDescription: '',
+          name:  '',
+          localCity:  '',
+          quote:  '',
+          tourDescription:  '',
           aboutMe: '',
-          languages: [],
-          hourlyRate: null,
+          languages: '',
+          hourlyRate: '',
           profile_isComplete: true // for now I return true, later we'll use it to verify if the profile is complete enough to apper in the LocalPreview browse
         }
       }
     },
+    created() {
+      this.setLocal(this.local_id)
+    },
     methods: {
+      async setLocal(local_id) {
+        await axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
+            const local = res.data[0]
+            this.form.name = local.name
+            this.form.localCity = local.localCity
+            this.form.quote = local.quote
+            this.form.tourDescription = local.tourDescription
+            this.form.aboutMe = local.aboutMe
+            this.form.languages = local.languages
+            this.form.hourlyRate = local.hourlyRate
+				})	
+      },
       getCity(city) {
         this.form.localCity = city;
         console.log(city);
       },
-      onClickSubmit(form) {
-        console.log(form)
+      async onClickSubmit(form) {
+        await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, form).then(res => {
+            console.log(res.data)
+				})	
       }
     }
 

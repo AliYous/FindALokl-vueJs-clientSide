@@ -28,7 +28,7 @@ Vue.use(VueRouter)
     component: LocalsLandingPage
   },
   {
-    path: '/local/edit/:id',
+    path: '/local/edit/:local_id',
     name: 'LocalProfileEdit',
     component: LocalProfileEdit,
     props: true
