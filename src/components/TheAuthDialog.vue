@@ -102,10 +102,16 @@
 				this.loading = true;
 				let email = this.form.email;
 				let password = this.form.password;
-				this.login({email, password}).then(() => {
+				try {
+					const user = await this.login({email, password})
+					if(user.isLocal && user.firstTimeVisit) {
+						console.log("user is first visitor : " + user)
+					}
 					this.loading = false;
 					this.dialog = false;
-				})
+				} catch(err) {
+					console.log(err)
+				}				
 			},
 			onSignUp() {
 				this.loading = true;

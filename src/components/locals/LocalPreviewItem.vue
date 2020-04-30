@@ -38,6 +38,10 @@ export default {
   .main:hover {
     cursor: pointer;
   }
+
+  .card {
+    width:40rem;
+  }
   .card-horizontal {
     display: flex;
     flex: 1 1 auto;

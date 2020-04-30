@@ -52,7 +52,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 5rem;
+        top: 4.7rem;
   }
   .header-search {
       width: 40%;

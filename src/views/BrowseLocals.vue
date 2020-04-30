@@ -49,20 +49,7 @@ export default {
 <style scoped>
 
   .top-text {
-    margin-top: 10rem;
+    margin-top: 6.5rem;
     text-align: center;
-  }
-
-  .local-previews-list {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    width: 90%;
-    height: 50rem;
-  }
-  .local-previews-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
 </style>

@@ -24,10 +24,10 @@ export default {
       localStorage.setItem('token', token)
       axios.defaults.headers.common['Authorization'] = token
       commit('auth_success', token, user)
+      return user;
     },
     async register({ commit }, user) {
       commit('auth_request')
-      console.log(user)
       const resp = await axios.post('http://localhost:3000/api/user/register', user )
       console.log(resp)
     },
