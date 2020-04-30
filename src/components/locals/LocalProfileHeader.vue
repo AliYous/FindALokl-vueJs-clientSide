@@ -9,7 +9,7 @@
               <div class="card-body">
                 <div class="local-info">
                   <div class="city-profile">
-                    <h4 class="card-title">Tanya</h4>
+                    <h4 class="card-title">{{ local.name }}</h4>
                     <h6 class="city-name">Paris, France</h6>
                   </div>
                   <h5 class="price">25€/h</h5>
@@ -25,7 +25,8 @@
 
 <script>
 export default {
-    name: 'LocalProfileHeader'
+    name: 'LocalProfileHeader',
+    props: ['local']
 
 }
 </script>
@@ -38,7 +39,7 @@ export default {
  }
  .main-info-container {
    display: flex;
-   background-color: black;
+   /* background-color: black; */
  }
 
   .card {

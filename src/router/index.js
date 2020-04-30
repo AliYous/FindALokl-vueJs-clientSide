@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import BrowseLocals from '../views/BrowseLocals.vue'
 import LocalsLandingPage from '../views/LocalsLandingPage'
 import LocalProfileEdit from '../views/LocalProfileEdit'
+import LocalProfilePage from '../views/LocalProfilePage'
 
 
 
@@ -16,9 +17,10 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/locals',
+    path: '/locals/city/:city',
     name: 'BrowseLocals',
-    component: BrowseLocals
+    component: BrowseLocals,
+    props: true
   },
   {
     path: '/become-a-local',
@@ -26,9 +28,17 @@ Vue.use(VueRouter)
     component: LocalsLandingPage
   },
   {
-    path: '/local/edit',
+    path: '/local/edit/:id',
     name: 'LocalProfileEdit',
-    component: LocalProfileEdit
+    component: LocalProfileEdit,
+    props: true
+
+  },
+  {
+    path: '/local/profile/:local_id',
+    name: 'LocalProfilePage',
+    component: LocalProfilePage,
+    props: true
   }
 ]
 

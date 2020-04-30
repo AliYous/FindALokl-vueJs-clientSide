@@ -1,5 +1,5 @@
 <template>
-      <div class="col-md-5 main" @click.prevent="onPreviewClick">
+      <div class="col-md-5 main" @click.prevent="onPreviewClick(localPreview.local_id)">
           <div class="card">
                 <div class="card-horizontal">
                     <div class="img-square-wrapper">
@@ -8,13 +8,13 @@
                     <div class="card-body">
                       <div class="local-info">
                         <div class="city-profile">
-                          <h4 class="card-title">{{ local.name }}</h4>
-                          <h6 class="city-name">{{ local.city }}</h6>
+                          <h4 class="card-title">{{ localPreview.name }}</h4>
+                          <h6 class="city-name">{{ localPreview.city }}</h6>
                         </div>
-                        <h5 class="price">€{{local.hourlyRate}}/h</h5>
+                        <h5 class="price">€{{localPreview.hourlyRate}}/h</h5>
                       </div>
 
-                        <p class="card-text">{{ local.quote }}</p>
+                        <p class="card-text">{{ localPreview.quote }}</p>
                     </div>
                 </div>
             </div>
@@ -22,12 +22,13 @@
 </template>
 
 <script>
+
 export default {
   name: 'LocalPreviewItem',
-  props: ['local'],
+  props: ['localPreview'],
   methods: {
-    onPreviewClick() {
-      this.$router.push({ name : "LocalProfile" });
+    onPreviewClick(local_id) {
+      this.$router.push({name : "LocalProfilePage", params: {local_id: local_id} });
     }
   }
 

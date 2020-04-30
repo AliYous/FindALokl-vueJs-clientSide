@@ -1,27 +1,21 @@
 <template>
   <div class="main">
-    <TheHeaderImgAndSearch  v-bind:minified="true"/>
-
-    <div class="top-text">
-      <h4> Explore <u>{{ lastSearchInput }}</u>, with one of 722 Locals </h4>
+    <div class="local-previews-list container-fluid">
+        <div class="local-previews-row row" v-for="localPreview in browseLocalsList" :key="localPreview._id">
+            <LocalPreviewItem v-bind:localPreview="localPreview" />
+        </div>
     </div>
-
-    <LocalPreviewList />
-
   </div>
 </template>
 
 <script>
-import TheHeaderImgAndSearch  from '../components/TheHeaderImgAndSearch'
-import LocalPreviewList  from '../components/locals/LocalPreviewList'
-import { mapActions } from 'vuex'
+import LocalPreviewItem  from './LocalPreviewItem'
+
 
 export default {
-  name: 'BrowseLocals',
-  props: ['city'],
+  name: 'LocalPreviewList',
   components: {
-    TheHeaderImgAndSearch,
-    LocalPreviewList
+    LocalPreviewItem
   },
   computed: {
     lastSearchInput () {
@@ -31,17 +25,13 @@ export default {
       return this.$store.getters.lastLoadedLocals
     }
   },
-  created() {
-    this.fetchLocalPreviews(this.city); // city is passed down from dynamic url params
-  },
   data() {
     return {
-    }
-  },
-  methods: {
-    ...mapActions(['fetchLocalPreviews']),
 
+
+    }
   }
+
 }
 </script>
 
