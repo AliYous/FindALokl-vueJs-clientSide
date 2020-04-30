@@ -13,7 +13,6 @@
                         </div>
                         <h5 class="price">€{{localPreview.hourlyRate}}/h</h5>
                       </div>
-
                         <p class="card-text">{{ localPreview.quote }}</p>
                     </div>
                 </div>

@@ -8,6 +8,7 @@
             solo
             prepend-inner-icon="mdi-map-search-outline"
             class="text-field"
+            @keypress.enter="browseLocals(city)"
         >
         
             <template v-slot:append>
@@ -19,7 +20,6 @@
                 class="ma-0"
                 style="left:5rem;"
                 @click="browseLocals(city)"
-
                 >
                 Browse locals
                 </v-btn>              

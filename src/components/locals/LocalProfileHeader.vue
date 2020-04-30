@@ -10,11 +10,11 @@
                 <div class="local-info">
                   <div class="city-profile">
                     <h4 class="card-title">{{ local.name }}</h4>
-                    <h6 class="city-name">Paris, France</h6>
+                    <h6 class="city-name">{{ local.localCity }}</h6>
                   </div>
-                  <h5 class="price">25€/h</h5>
+                  <h5 class="price">€ {{ local.hourlyRate }} /h</h5>
                 </div>
-                  <p class="card-text">this is a quote</p>
+                  <p class="card-text">{{ local.quote }}</p>
               </div>
           </div>
       </v-card>

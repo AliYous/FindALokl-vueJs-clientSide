@@ -1,7 +1,6 @@
 <template>
   <div>
       <LocalProfileHeader v-if="local" v-bind:local="local"/>
-      <h1> {{local}} </h1>
   </div>
 </template>
 
@@ -17,13 +16,20 @@ export default {
     },
     data() {
         return {
-            local: ''
+            loading: false,
+            local: {}
         }
+    },
+    created() {
+        this.fetchLocal(this.local_id);
     },
     methods: {
         fetchLocal(local_id) {
-            return axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
+            this.loading = true;
+            axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
                 console.log(res.data[0]);
+                this.loading = false;
+                this.local = res.data[0];
             })
         }
     }
