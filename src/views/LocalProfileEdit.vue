@@ -97,6 +97,7 @@
       x-large
       color="#F38633"
       class="ma-0 btn-submit"
+      :loading="loading"
       @click.prevent="onClickSubmit(form)"
     >
     Save changes
@@ -121,6 +122,7 @@ export default {
     },
     data() {
       return {
+        loading: false,
         form : {
           name:  '',
           localCity:  '',
@@ -154,9 +156,10 @@ export default {
         console.log(city);
       },
       async onClickSubmit(form) {
+        this.loading = true;
         await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, form).then(res => {
             console.log(res.data)
-				})	
+        });        
       }
     }
 
