@@ -6,7 +6,11 @@
       <h4> Explore <u>{{ lastSearchInput }}</u>, with one of 722 Locals </h4>
     </div>
 
-      <LocalPreviewList />
+    <div v-if="loading" class="progress-circle container">
+       <v-progress-circular indeterminate :size="70" :width="7" color="purple"></v-progress-circular>
+    </div>
+
+      <LocalPreviewList v-if="!loading"/>
 
   </div>
 </template>
@@ -32,10 +36,13 @@ export default {
     }
   },
   created() {
-    this.fetchLocalPreviews(this.city); // city is passed down from dynamic url params
+    this.fetchLocalPreviews(this.city).then(() => {
+      setTimeout(() => {  this.loading = false; }, 1000);
+    }); 
   },
   data() {
     return {
+      loading: true
     }
   },
   methods: {
@@ -50,5 +57,9 @@ export default {
   .top-text {
     margin-top: 6.5rem;
     text-align: center;
+  }
+  .progress-circle {
+    display: flex;
+    justify-content: center;
   }
 </style>
