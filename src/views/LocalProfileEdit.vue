@@ -159,7 +159,11 @@ export default {
             this.form.aboutMe = local.aboutMe
             this.form.languages = local.languages
             this.form.hourlyRate = local.hourlyRate
-            this.form.localImage = local.localImage
+            if(local.localImage) {
+              this.form.localImage = local.localImage
+            } else {
+              this.form.localImage = 'http://via.placeholder.com/365x365'
+            }
 				})	
       },
       getCity(city) {
