@@ -9,9 +9,9 @@
       raised
       >
         <div class="card-horizontal">
-            <div class="img-square-wrapper">
-                <img class="" src="http://via.placeholder.com/365x365" alt="Card image cap">
-            </div>
+          
+            <TheImagePreview />
+          
             <div class="card-body">
               <form class="form container">
                   <v-text-field class="text-field"
@@ -43,7 +43,7 @@
                       <v-textarea
                         v-model="form.quote"
                         prepend-inner-icon="mdi-comment-quote"
-                        class="quote-field"
+                        class="quote-field text-field"
                         label="Your favorite quote"
                         rows="2"
                         rounded
@@ -113,12 +113,15 @@
 <script>
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import axios from 'axios';
+import TheImagePreview from '../components/TheImagePreview'
+
 
 export default {
     name: 'LocalProfileEdit',
     props: ['local_id'],
     components: {
-      VueGoogleAutocomplete
+      VueGoogleAutocomplete,
+      TheImagePreview
     },
     data() {
       return {
@@ -131,7 +134,8 @@ export default {
           aboutMe: '',
           languages: '',
           hourlyRate: '',
-          profile_isComplete: true // for now I return true, later we'll use it to verify if the profile is complete enough to apper in the LocalPreview browse
+          profile_isComplete: true, // for now I return true, later we'll use it to verify if the profile is complete enough to apper in the LocalPreview browse
+          localImage: null,
         }
       }
     },
@@ -139,6 +143,12 @@ export default {
       this.setLocal(this.local_id)
     },
     methods: {
+      onFileSelected(event) {
+        const image = event.target;  
+        this.form.localImage = URL.createObjectURL(image);  
+        console.log('url: ' + URL.createObjectURL(image))
+        console.log('image: ' + image)
+      },
       async setLocal(local_id) {
         await axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
             const local = res.data[0]
@@ -149,6 +159,7 @@ export default {
             this.form.aboutMe = local.aboutMe
             this.form.languages = local.languages
             this.form.hourlyRate = local.hourlyRate
+            this.form.localImage = local.localImage
 				})	
       },
       getCity(city) {
@@ -179,6 +190,12 @@ export default {
  }
  .main-info-container {
    display: flex;
+   width: 100%;
+ }
+
+ .img-preview {
+   width: 100%;
+   height: auto;
  }
 
   .card {
@@ -189,20 +206,28 @@ export default {
     flex: 1 1 auto;
   }
 
+  .form {
+    display: flex;
+    flex-direction: column;
+    max-width: 50rem;
+  }
+  .text-field {
+    width: 41rem;
+  }
+
   .search-container {
       display: flex;
       justify-content: center;
       align-content: flex-start;
       /* background-color: black; */
+      width: 42rem;
       height: 3.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      margin-left: -1rem;
   }
   .autocomplete-bar {
-    /* margin: 0 0 0 -2rem; */
-    padding-left: 5rem;
     min-height: 3.5rem;
     border-radius: 5rem;
-    min-width: 100%;
     color: #CED4DA;
     border-color: #CED4DA;
   }
@@ -226,6 +251,7 @@ export default {
   .profile-info-container {
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
   }
 
   .btn-submit {

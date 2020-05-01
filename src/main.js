@@ -6,6 +6,9 @@ import vuetify from './plugins/vuetify';
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
+import {vueImgPreview} from 'vue-img-preview'
+
+Vue.component('vue-img-preview', vueImgPreview)
 
 Vue.config.productionTip = false
 
