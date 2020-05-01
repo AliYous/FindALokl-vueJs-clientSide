@@ -7,9 +7,9 @@
         </div>
         <!-- <img class="" src="http://via.placeholder.com/365x365" alt="Card image cap"> -->
         <input
-      ref="fileInput"
-      type="file"
-      @input="pickFile">
+          ref="fileInput"
+          type="file"
+          @input="pickFile">
 
 
         <!-- <v-file-input
@@ -27,9 +27,12 @@
 export default {
   data() {
       return {
-        previewImage: 'http://via.placeholder.com/365x365'
+        // previewImage: 'http://via.placeholder.com/365x365'
+        previewImage: this.$props.localImage
+
       };
     },
+  props: ['localImage'],
   methods: {
       selectImage () {
           this.$refs.fileInput.click()
@@ -43,7 +46,7 @@ export default {
             this.previewImage = e.target.result
           }
           reader.readAsDataURL(file[0])
-          this.$emit('input', file[0])
+          this.$emit('changeImage', file[0])
         }
       }
   }

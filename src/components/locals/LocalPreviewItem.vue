@@ -68,6 +68,7 @@ export default {
     height: auto;
   }
   .card-body {
+    width: 50%;
     padding-top: 0.3rem;
     padding-bottom: 0;
   }

@@ -1,7 +1,6 @@
 <template>
   <div class="main">
-      <h1>Edit you Local profile</h1>
-
+      <!-- <h1>Edit your Local profile</h1> -->
     <div class="container main-info-container">
       <v-card
       class="mx-auto card" 
@@ -10,7 +9,7 @@
       >
         <div class="card-horizontal">
           
-            <TheImagePreview />
+            <TheImagePreview v-bind:localImage="form.localImage" v-on:changeImage="updateLocalImage($event)"/>
           
             <div class="card-body">
               <form class="form container">
@@ -143,12 +142,6 @@ export default {
       this.setLocal(this.local_id)
     },
     methods: {
-      onFileSelected(event) {
-        const image = event.target;  
-        this.form.localImage = URL.createObjectURL(image);  
-        console.log('url: ' + URL.createObjectURL(image))
-        console.log('image: ' + image)
-      },
       async setLocal(local_id) {
         await axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
             const local = res.data[0]
@@ -162,9 +155,10 @@ export default {
             if(local.localImage) {
               this.form.localImage = local.localImage
             } else {
-              this.form.localImage = 'http://via.placeholder.com/365x365'
+              // this.form.localImage = 'http://via.placeholder.com/365x365'
+              this.form.localImage = 'https://showaroundoriginal.imgix.net/sa/10050267/gb1580147742svp0bzbi14.jpg?'              
             }
-				})	
+        });
       },
       getCity(city) {
         this.form.localCity = city;
@@ -175,7 +169,10 @@ export default {
         await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, form).then(res => {
             console.log(res.data)
         });        
-      }
+      },
+      updateLocalImage(updatedImage) {
+        this.form.localImage = updatedImage;
+      },
     }
 
 }
