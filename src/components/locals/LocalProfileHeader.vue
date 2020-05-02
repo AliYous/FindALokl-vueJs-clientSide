@@ -1,26 +1,38 @@
 <template>
-  <div class="main">
-    <div class="container main-info-container">
-      <v-card  class="mx-auto card" max-width="100%">
-          <div class="card-horizontal">
-              <div class="img-square-wrapper">
-                  <img class="" src="http://via.placeholder.com/350x350" alt="Card image cap">
-              </div>
-              <div class="card-body">
-                <div class="local-info">
-                  <div class="city-profile">
-                    <h4 class="card-title">{{ local.name }}</h4>
-                    <h6 class="city-name">{{ local.localCity }}</h6>
-                  </div>
-                  <h5 class="price">€ {{ local.hourlyRate }} /h</h5>
+      <div class="main">
+            <v-card raised min-width="45rem" class="main-card">
+                <div class="card-horizontal" >
+                    <div class="img-square-wrapper">
+                        <!-- <img class="" src="http://via.placeholder.com/200x200" alt="Card image cap"> -->
+                        <img class="" src="@/assets/tanya.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                      
+                      <div class="name-city-price-container container-fluid row">
+                          <div class="name-price-col col">
+                              <h5 class="local-name">{{ local.name }}</h5>
+                              <h6 class="city-name">{{ local.localCity }}</h6>
+                          </div>
+                          <h4 class="price">€ {{local.hourlyRate}}/h</h4>
+                      </div>
+
+                      <v-divider style="margin-top: 1rem"></v-divider>
+
+                      <!-- Local's quote -->
+                      <div class="quote-row row container" style="height: 7rem">
+                        <v-icon class="opening-quote">mdi-format-quote-open</v-icon>
+                          <p class="card-text">{{ local.quote }}</p>
+                        <v-icon class="closing-quote">mdi-format-quote-close</v-icon>
+                      </div>     
+                      <!--  -->
+
+                      <v-divider ></v-divider>
+
+                    </div>
                 </div>
-                  <p class="card-text">{{ local.quote }}</p>
-              </div>
-          </div>
-      </v-card>
-    </div>
-      
-  </div>
+                
+            </v-card>
+       </div>
 </template>
 
 <script>
@@ -31,28 +43,65 @@ export default {
 }
 </script>
 
-<style>
- .main {
-   display: flex;
-   justify-content: center;
-   width:100%;
- }
- .main-info-container {
-   display: flex;
-   /* background-color: black; */
- }
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700;1,900&display=swap');
 
-  .card {
-    width: 100%;
+  .main {
+    display: flex;
+    align-items: center;
   }
- .card-horizontal {
+  .main-card {
+    height: 20rem;
+  }
+  .img-square-wrapper {
+    height: 365;
+    width: 365;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .card-body {
+    width: 39rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0;
+  }
+  .card-horizontal {
     display: flex;
     flex: 1 1 auto;
   }
 
-  .local-info {
+  .name-city-price-container {
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .local-name {
+    font-family: 'Poppins:ital';
+  }
+  .price {
+    font-family: 'Poppins:ital';
+    color: #F38633;
+    font-size: 30px;
+    /* margin-top: 2.3rem; */
+  }
+  .city-name {
+    margin-top: -0.6rem;
+    color: #979A87;
+  }
+
+  .quote-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .opening-quote {
+    top:-2rem;
+    left: -8rem;
+  }
+  .closing-quote {
+    top: 2rem;
+    left: 8rem;
   }
 
 
