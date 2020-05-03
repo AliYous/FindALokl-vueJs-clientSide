@@ -1,6 +1,6 @@
 <template>
       <div class="main">
-            <v-card raised min-width="45rem" class="main-card">
+            <v-card raised min-width="100%" class="main-card">
                 <div class="card-horizontal" >
                     <div class="img-square-wrapper">
                         <!-- <img class="" src="http://via.placeholder.com/200x200" alt="Card image cap"> -->
@@ -16,10 +16,10 @@
                           <h4 class="price">€ {{local.hourlyRate}}/h</h4>
                       </div>
 
-                      <v-divider style="margin-top: 1rem"></v-divider>
+                      <v-divider ></v-divider>
 
                       <!-- Local's quote -->
-                      <div class="quote-row row container" style="height: 7rem">
+                      <div class="quote-row row container" style="height: 5rem">
                         <v-icon class="opening-quote">mdi-format-quote-open</v-icon>
                           <p class="card-text">{{ local.quote }}</p>
                         <v-icon class="closing-quote">mdi-format-quote-close</v-icon>
@@ -27,6 +27,10 @@
                       <!--  -->
 
                       <v-divider ></v-divider>
+
+                      <v-btn style="">
+                        Contact {{local.name}} 
+                      </v-btn>
 
                     </div>
                 </div>
@@ -49,9 +53,10 @@ export default {
   .main {
     display: flex;
     align-items: center;
+    align-content: center;
   }
   .main-card {
-    height: 20rem;
+    height: 19.15rem;
   }
   .img-square-wrapper {
     height: 365;
@@ -93,15 +98,14 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
   }
   .opening-quote {
     top:-2rem;
-    left: -8rem;
+    left: -16rem;
   }
   .closing-quote {
-    top: 2rem;
-    left: 8rem;
+    top: 0.3rem;
+    left: 16rem;
   }
 
 
