@@ -160,7 +160,7 @@ export default {
               this.form.localImage = local.localImage
             } else {
               // this.form.localImage = 'http://via.placeholder.com/365x365'
-              this.form.localImage = 'https://showaroundoriginal.imgix.net/sa/10050267/gb1580147742svp0bzbi14.jpg?'              
+              this.form.localImage = 'http://via.placeholder.com/365x365'              
             }
         });
       },
@@ -170,9 +170,13 @@ export default {
       },
       async onClickSubmit(form) {
         this.loading = true;
-        await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, form).then(res => {
-            console.log(res.data)
-        });        
+        try {
+          await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, form).then(res => {
+              console.log(res.data)
+          });
+        } catch(err) {
+          console.log(err);
+        }     
       },
       updateLocalImage(updatedImage) {
         this.form.localImage = updatedImage;
