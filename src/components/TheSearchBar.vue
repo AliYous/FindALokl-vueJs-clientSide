@@ -77,7 +77,6 @@ export default {
     methods: {
         getCity(addressData) {
             this.city = addressData.locality;
-            console.log(addressData);
         },
         browseLocals(city) {
             this.loading = true;

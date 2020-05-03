@@ -160,9 +160,9 @@ export default {
             }
         });
       },
-      getCity(city) {
-        this.form.localCity = city;
-        console.log(city);
+      getCity(addressData) {
+        this.form.localCity = addressData.locality + "," + addressData.country ;
+        console.log(this.form.localCity);
       },
       async onClickSubmit(form) {
         this.loading = true;
