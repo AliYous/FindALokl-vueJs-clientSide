@@ -1,7 +1,8 @@
 <template>
     <div class="search-container">
+
         <!-- Comment all this section when replacing with autocomplete -->
-        <v-text-field
+        <!-- <v-text-field
             v-model="city"
             label="Where next?"
             rounded
@@ -25,22 +26,23 @@
                 </v-btn>              
             </template>
             
-        </v-text-field>
+        </v-text-field> -->
         <!-- End of comment -->
 
-        <!-- <v-icon style="left:0.5rem;">mdi-map-search-outline</v-icon>
+        <v-icon style="left:0.5rem;">mdi-map-search-outline</v-icon>
         <vue-google-autocomplete
+            v-model="city"
             id="map"
             ref="citySearch"
             class="autocomplete-bar"
             classname="form-control"
             placeholder="Where Next?"
-            v-on:placechanged="getCity"
             types="(cities)"
+            v-on:placechanged="getCity"
         >
         </vue-google-autocomplete> -->
         
-        <!-- <v-btn 
+        <v-btn 
             color="#F38633" 
             class="search-btn" 
             x-large 
@@ -50,30 +52,32 @@
             @click="browseLocals(city)"
         >
         Browse Locals
-        </v-btn> -->
+        </v-btn>
 
     </div>
 </template>
 
 <script>
-// import VueGoogleAutocomplete from 'vue-google-autocomplete';
+import VueGoogleAutocomplete from 'vue-google-autocomplete';
 // import axios from 'axios';
 
 export default {
     components: {
-        // VueGoogleAutocomplete
+        VueGoogleAutocomplete
     },
     data() {
         return {
-            city: this.$store.state.citySearched || '',
+            city: '', //this.$store.state.citySearched,
             loading: false
         }
     },
-
+    mounted() {
+        this.$refs.citySearch.focus();
+    },
     methods: {
-        getCity(city) {
-            this.city = city;
-            console.log(city);
+        getCity(addressData) {
+            this.city = addressData.locality;
+            console.log(addressData);
         },
         browseLocals(city) {
             this.loading = true;

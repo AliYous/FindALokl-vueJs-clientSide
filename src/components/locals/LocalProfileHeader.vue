@@ -28,7 +28,7 @@
 
                       <v-divider ></v-divider>
 
-                      <v-btn style="">
+                      <v-btn>
                         Contact {{local.name}} 
                       </v-btn>
 
