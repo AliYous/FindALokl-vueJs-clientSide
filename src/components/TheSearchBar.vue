@@ -1,34 +1,5 @@
 <template>
     <div class="search-container">
-
-        <!-- Comment all this section when replacing with autocomplete -->
-        <!-- <v-text-field
-            v-model="city"
-            label="Where next?"
-            rounded
-            solo
-            prepend-inner-icon="mdi-map-search-outline"
-            class="text-field"
-            @keypress.enter="browseLocals(city)"
-        >
-        
-            <template v-slot:append>
-                <v-btn
-                dark
-                rounded
-                x-large
-                color="#F38633"
-                class="ma-0"
-                style="left:5rem;"
-                @click="browseLocals(city)"
-                >
-                Browse locals
-                </v-btn>              
-            </template>
-            
-        </v-text-field> -->
-        <!-- End of comment -->
-
         <v-icon style="left:0.5rem;">mdi-map-search-outline</v-icon>
         <vue-google-autocomplete
             v-model="city"
@@ -76,7 +47,7 @@ export default {
     },
     methods: {
         getCity(addressData) {
-            this.city = addressData.locality;
+            this.city = addressData.locality + ", " + addressData.country;
         },
         browseLocals(city) {
             this.loading = true;

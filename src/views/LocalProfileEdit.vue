@@ -99,7 +99,7 @@
       :loading="loading"
       @click.prevent="onClickSubmit(form)"
     >
-    Save changes
+    Save changes & view profile
     </v-btn> 
 
 
@@ -126,6 +126,8 @@ export default {
       return {
         loading: false,
         form : {
+          _id: '',
+          user_id: '',
           name:  '',
           localCity:  '',
           quote:  '',
@@ -134,7 +136,7 @@ export default {
           languages: '',
           hourlyRate: '',
           profile_isComplete: true, // for now I return true, later we'll use it to verify if the profile is complete enough to apper in the LocalPreview browse
-          localImage: null,
+          localImage: 'http://via.placeholder.com/365x365',
         }
       }
     },
@@ -145,6 +147,8 @@ export default {
       async setLocal(local_id) {
         await axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
             const local = res.data[0]
+            this.form._id = local._id
+            this.form.user_id = local.user_id
             this.form.name = local.name
             this.form.localCity = local.localCity
             this.form.quote = local.quote
@@ -161,7 +165,7 @@ export default {
         });
       },
       getCity(addressData) {
-        this.form.localCity = addressData.locality + "," + addressData.country ;
+        this.form.localCity = addressData.locality + ", " + addressData.country ;
         console.log(this.form.localCity);
       },
       async onClickSubmit(form) {
