@@ -61,16 +61,19 @@ export default {
 <style scoped>
 .search-container {
     display: flex;
+    width: 200%;
 }
 .autocomplete-bar {
     margin: 0 0 0 -2rem;
     padding: 0 0 0 2.5rem;
-    width: 80%;
-    height: 52px;
-    border-radius: 20px;
+    border-radius: 30px;
+}
+.autocomplete-bar:focus {
+    border: 0px solid #ffffff !important;
 }
 .search-btn {
-  right: 10%;
+  right: 15%;
+  margin-top: 0.096rem;
 }
 
 </style>

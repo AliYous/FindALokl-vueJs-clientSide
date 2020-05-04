@@ -33,7 +33,8 @@
                       <v-btn
                         color="#F38633"
                         block
-                        dark            
+                        dark      
+                        style="margin-bottom: 1rem"      
                       >
                         Contact {{local.name}} 
                       </v-btn>

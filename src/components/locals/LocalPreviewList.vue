@@ -37,8 +37,9 @@ export default {
 <style scoped>
   .local-previews-list {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     width: 90%;
     height: auto;
   }

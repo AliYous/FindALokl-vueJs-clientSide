@@ -70,7 +70,8 @@ export default {
     background-position: center center;
   }
   .card-body {
-    width: 39rem;
+    width: 30rem;
+    /* width: 39rem; */
     padding-top: 0.3rem;
     padding-bottom: 0;
   }
@@ -107,11 +108,11 @@ export default {
   }
   .opening-quote {
     top:-2rem;
-    left: -3.5rem;
+    left: -2.1rem;
   }
   .closing-quote {
     top: 2rem;
-    left: 3.5rem;
+    left: 2.1rem;
   }
 
 
