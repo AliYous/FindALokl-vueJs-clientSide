@@ -170,11 +170,18 @@ export default {
       },
       async onClickSubmit(form) {
         this.loading = true;
+        let data = new FormData();
+        data.append('file', form.localImage);
+        form.localImage = '';
+        data.append('localData', JSON.stringify(form));
+
         try {
-          await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, form).then(res => {
+          await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, data).then(res => {
               console.log(res.data)
+              this.loading = false; 
           });
         } catch(err) {
+          this.loading = false;          
           console.log(err);
         }     
       },

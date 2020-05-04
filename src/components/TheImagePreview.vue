@@ -40,6 +40,7 @@ export default {
       pickFile () {
         let input = this.$refs.fileInput
         let file = input.files
+        console.log(file[0])
         if (file && file[0]) {
           let reader = new FileReader
           reader.onload = e => {
