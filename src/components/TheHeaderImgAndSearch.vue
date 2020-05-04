@@ -37,7 +37,7 @@ export default {
     align-content: center;
     width: 100%;
     height: 35rem;
-    background-image: url("../assets/header-img4.jpg");
+    background-image: url("../assets/header-img4-dark.jpg");
     background-size: cover;
     background-position-y: 80%;
   } 
@@ -45,7 +45,7 @@ export default {
         position: fixed;
         width: 100%;
         height: 8rem;
-        background-image: url("../assets/header-img4.jpg");
+        background-image: url("../assets/header-img4-dark.jpg");
         background-size: cover;
         background-position-y: 70%;
         display: flex;

@@ -17,6 +17,7 @@
             color="#F38633" 
             class="search-btn" 
             x-large 
+            height="56px"
             dark 
             rounded
             :loading="loading"
@@ -70,11 +71,10 @@ export default {
     border-radius: 30px;
 }
 .autocomplete-bar:focus {
-    border: 0px solid #ffffff !important;
+    border: 1px solid #493E92 !important;
 }
 .search-btn {
   right: 15%;
-  margin-top: 0.096rem;
 }
 
 </style>
