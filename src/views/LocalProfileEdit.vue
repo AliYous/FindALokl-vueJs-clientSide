@@ -9,7 +9,7 @@
       >
         <div class="card-horizontal">
           
-            <TheImagePreview v-bind:localImage="form.localImage" v-on:changeImage="updateLocalImage($event)"/>
+            <TheImagePreview v-if="form.localImage" v-bind:localImage="form.localImage" v-on:changeImage="updateLocalImage($event)"/>
           
             <div class="card-body">
               <form class="form container">
@@ -136,7 +136,7 @@ export default {
           languages: '',
           hourlyRate: '',
           profile_isComplete: true, // for now I return true, later we'll use it to verify if the profile is complete enough to apper in the LocalPreview browse
-          localImage: 'http://via.placeholder.com/365x365',
+          localImage: null
         }
       }
     },
@@ -156,12 +156,8 @@ export default {
             this.form.aboutMe = local.aboutMe
             this.form.languages = local.languages
             this.form.hourlyRate = local.hourlyRate
-            if(local.localImage) {
-              this.form.localImage = local.localImage
-            } else {
-              // this.form.localImage = 'http://via.placeholder.com/365x365'
-              this.form.localImage = 'http://via.placeholder.com/365x365'              
-            }
+            this.form.localImage = local.localImage
+        
         });
       },
       getCity(addressData) {
@@ -172,8 +168,11 @@ export default {
         this.loading = true;
         let data = new FormData();
         data.append('file', form.localImage);
+        const tempImgHolder = form.localImage;
         form.localImage = '';
         data.append('localData', JSON.stringify(form));
+        form.localImage = tempImgHolder;
+
 
         try {
           await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, data).then(res => {
