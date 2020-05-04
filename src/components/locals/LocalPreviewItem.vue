@@ -4,7 +4,7 @@
                 <div class="card-horizontal" >
                     <div class="img-square-wrapper">
                         <!-- <img class="" src="http://via.placeholder.com/200x200" alt="Card image cap"> -->
-                        <img class="" src="@/assets/tanya.jpg" alt="Card image cap">
+                        <img class="" :src="localPreview.localImage" alt="Card image cap">
                     </div>
                     <div class="card-body">
                       

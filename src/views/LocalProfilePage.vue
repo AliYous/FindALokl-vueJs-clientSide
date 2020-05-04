@@ -1,7 +1,7 @@
 <template>
-  <div class="container main-container">
+  <div v-if="local" class="container main-container">
 
-      <LocalProfileHeader v-if="local" v-bind:local="local"/>
+      <LocalProfileHeader v-bind:local="local"/>
 
       <div class="profile-content container">
           <h3 class="explore-city-title">Explore {{ local.localCity }} with {{ local.name }} </h3>
@@ -53,7 +53,7 @@ export default {
     data() {
         return {
             loading: false,
-						local: {},
+			local: null,
         }
     },
     created() {
@@ -63,9 +63,9 @@ export default {
         fetchLocal(local_id) {
             this.loading = true;
             axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
-                console.log(res.data[0]);
                 this.loading = false;
                 this.local = res.data[0];
+                console.log(res.data[0])
             })
         }
     }

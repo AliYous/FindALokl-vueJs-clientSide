@@ -176,13 +176,14 @@ export default {
 
         try {
           await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, data).then(res => {
-              console.log(res.data)
-              this.loading = false; 
+              console.log(res.data);
           });
         } catch(err) {
           this.loading = false;          
           console.log(err);
-        }     
+        }
+        this.loading = false; 
+        this.$router.push({ name: "LocalProfilePage", params: {local_id: this.form._id}})
       },
       updateLocalImage(updatedImage) {
         this.form.localImage = updatedImage;
