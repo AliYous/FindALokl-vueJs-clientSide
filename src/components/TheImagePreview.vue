@@ -1,25 +1,23 @@
 <template>
     <div>
         <div
+        v-if="localImage"
         class="imagePreviewWrapper"
         :style="{ 'background-image': `url(${previewImage})` }"
         @click="selectImage">
         </div>
-        <!-- <img class="" src="http://via.placeholder.com/365x365" alt="Card image cap"> -->
+        <div
+        v-else
+        class="imagePreviewWrapper"
+        style="background-image: url('http://via.placeholder.com/365x365')"
+        @click="selectImage">
+        </div>
+
         <input
           ref="fileInput"
           type="file"
           @input="pickFile">
 
-
-        <!-- <v-file-input
-            ref="fileInput"
-            accept="image/png, image/jpeg, image/bmp"
-            placeholder="Pick an avatar"
-            prepend-icon="mdi-camera"
-            label="Avatar"
-            @change="onFileSelected"
-        ></v-file-input> -->
     </div>
 </template>
 
@@ -27,7 +25,6 @@
 export default {
   data() {
       return {
-        // previewImage: 'http://via.placeholder.com/365x365'
         previewImage: this.$props.localImage
 
       };

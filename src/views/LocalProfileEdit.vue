@@ -9,7 +9,7 @@
       >
         <div class="card-horizontal">
           
-            <TheImagePreview v-if="form.localImage" v-bind:localImage="form.localImage" v-on:changeImage="updateLocalImage($event)"/>
+            <TheImagePreview v-bind:localImage="form.localImage" v-on:changeImage="updateLocalImage($event)"/>
           
             <div class="card-body">
               <form class="form container">

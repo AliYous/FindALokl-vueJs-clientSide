@@ -2,10 +2,12 @@
       <div class="main">
             <v-card raised min-width="45rem" class="main-card" @click.prevent="onPreviewClick(localPreview.local_id)">
                 <div class="card-horizontal" >
-                    <div class="img-square-wrapper">
-                        <!-- <img class="" src="http://via.placeholder.com/200x200" alt="Card image cap"> -->
-                        <img class="" :src="localPreview.localImage" alt="Card image cap">
+                  
+                    <div 
+                    class="imagePreviewWrapper"
+                    :style="{ 'background-image': `url(${localPreview.localImage})` }">
                     </div>
+
                     <div class="card-body">
                       
                       <div class="name-city-price-container container-fluid row">
@@ -59,13 +61,13 @@ export default {
   .main-card:hover {
     cursor: pointer;
   }
-  .img-square-wrapper {
-    height: 200px;
+  .imagePreviewWrapper {
     width: 200px;
-  }
-  img {
-    width: 100%;
-    height: auto;
+    height: 200px;
+    display: block;
+    margin: 0 auto 0;
+    background-size: cover;
+    background-position: center center;
   }
   .card-body {
     width: 39rem;

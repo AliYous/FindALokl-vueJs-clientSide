@@ -2,10 +2,12 @@
       <div class="main">
             <v-card raised min-width="100%" class="main-card">
                 <div class="card-horizontal" >
-                    <div class="img-square-wrapper">
-                        <!-- <img class="" src="http://via.placeholder.com/200x200" alt="Card image cap"> -->
-                        <img class="" :src="local.localImage" alt="Card image cap">
+                  
+                    <div 
+                      class="imagePreviewWrapper"
+                      :style="{ 'background-image': `url(${local.localImage})` }">
                     </div>
+
                     <div class="card-body">
                       
                       <div class="name-city-price-container container-fluid row">
@@ -58,14 +60,15 @@ export default {
   .main-card {
     height: 19.15rem;
   }
-  .img-square-wrapper {
-    height: 365;
-    width: 365;
+  .imagePreviewWrapper {
+    width: 306px;
+    height: 306px;
+    display: block;
+    margin: 0 auto 0;
+    background-size: cover;
+    background-position: center center;
   }
-  img {
-    width: 100%;
-    height: auto;
-  }
+
   .card-body {
     width: 39rem;
     padding-top: 0.3rem;
