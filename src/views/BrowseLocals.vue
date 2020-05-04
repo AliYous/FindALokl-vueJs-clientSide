@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-    <TheHeaderImgAndSearch  v-bind:minified="true"/>
+    <div class="header">
+      <TheHeaderImgAndSearch  v-bind:minified="true"/>
+    </div>
 
     <div class="top-text">
       <h4> Explore <u>{{ lastSearchInput }}</u>, with one of 722 Locals </h4>
@@ -9,8 +11,9 @@
     <div v-if="loading" class="progress-circle container">
        <v-progress-circular indeterminate :size="70" :width="7" color="purple"></v-progress-circular>
     </div>
-
+    <div class="list">
       <LocalPreviewList v-if="!loading"/>
+    </div>
 
   </div>
 </template>
@@ -54,12 +57,19 @@ export default {
 
 
 <style scoped>
+  .header {
+    z-index: 2;
+  }
   .top-text {
     margin-top: 6.5rem;
     text-align: center;
+    z-index: 1;
   }
   .progress-circle {
     display: flex;
     justify-content: center;
+  }
+  .list {
+    z-index: 0;
   }
 </style>

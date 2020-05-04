@@ -21,7 +21,7 @@
                       <v-divider ></v-divider>
 
                       <!-- Local's quote -->
-                      <div class="quote-row row container" style="height: 5rem">
+                      <div class="quote-row container" style="height: 5rem">
                         <v-icon class="opening-quote">mdi-format-quote-open</v-icon>
                           <p class="card-text">{{ local.quote }}</p>
                         <v-icon class="closing-quote">mdi-format-quote-close</v-icon>
@@ -30,10 +30,13 @@
 
                       <v-divider ></v-divider>
 
-                      <v-btn>
+                      <v-btn
+                        color="#F38633"
+                        block
+                        dark            
+                      >
                         Contact {{local.name}} 
                       </v-btn>
-
                     </div>
                 </div>
                 
@@ -71,6 +74,8 @@ export default {
 
   .card-body {
     width: 39rem;
+    display: flex;
+    flex-direction: column;
     padding-top: 0.3rem;
     padding-bottom: 0;
   }
@@ -99,16 +104,21 @@ export default {
 
   .quote-row {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
   }
+  .card-text {
+    width:80%;
+    text-align: center;
+  }
   .opening-quote {
     top:-2rem;
-    left: -16rem;
+    left: -3.5rem;
   }
   .closing-quote {
-    top: 0.3rem;
-    left: 16rem;
+    top: 2rem;
+    left: 3.5rem;
   }
 
 

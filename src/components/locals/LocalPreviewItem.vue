@@ -2,7 +2,7 @@
       <div class="main">
             <v-card raised min-width="45rem" class="main-card" @click.prevent="onPreviewClick(localPreview.local_id)">
                 <div class="card-horizontal" >
-                  
+
                     <div 
                     class="imagePreviewWrapper"
                     :style="{ 'background-image': `url(${localPreview.localImage})` }">
@@ -20,15 +20,15 @@
 
                       <v-divider style="margin-top: -0.5rem"></v-divider>
 
-                      <!-- Local's quote -->
-                      <div class="quote-row row container" style="height: 7rem">
+                     <!-- Local's quote -->
+                      <div class="quote-row container" style="height: 5rem">
                         <v-icon class="opening-quote">mdi-format-quote-open</v-icon>
                           <p class="card-text">{{ localPreview.quote }}</p>
                         <v-icon class="closing-quote">mdi-format-quote-close</v-icon>
                       </div>     
                       <!--  -->
 
-                      <v-divider style="margin-top: -0.5rem"></v-divider>
+                      <v-divider></v-divider>
 
                     </div>
                 </div>
@@ -97,17 +97,21 @@ export default {
 
   .quote-row {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: -1rem;
+  }
+  .card-text {
+    width:80%;
+    text-align: center;
   }
   .opening-quote {
     top:-2rem;
-    left: -8rem;
+    left: -3.5rem;
   }
   .closing-quote {
     top: 2rem;
-    left: 8rem;
+    left: 3.5rem;
   }
 
 
