@@ -4,7 +4,7 @@
       <div class="header-search">
         <h2 v-if="!minify">Find a Lokl</h2>
         <h3 v-if="!minify">To show you around</h3>
-        <TheSearchBar />
+        <TheSearchBar :citySearched="citySearched" />
       </div>
     </div>
 </template>
@@ -14,7 +14,7 @@ import TheSearchBar from '../components/TheSearchBar'
 
 export default {
     name: 'TheHeaderImgAndSearch',
-    props: ['minified'],
+    props: ['minified', 'citySearched'],
     data() {
         return{
             minify: this.$props.minified

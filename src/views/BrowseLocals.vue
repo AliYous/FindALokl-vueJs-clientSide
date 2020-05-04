@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="header">
-      <TheHeaderImgAndSearch  v-bind:minified="true"/>
+      <TheHeaderImgAndSearch  v-bind:minified="true" :citySearched="city" />
     </div>
 
     <div class="top-text">

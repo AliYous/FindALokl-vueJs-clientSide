@@ -36,14 +36,15 @@ export default {
     components: {
         VueGoogleAutocomplete
     },
+    props: ['citySearched'],
     data() {
         return {
-            city: '', //this.$store.state.citySearched,
+            city:'',
             loading: false
         }
     },
     mounted() {
-        this.$refs.citySearch.focus();
+        this.$refs.citySearch.update(this.$props.citySearched);
     },
     methods: {
         getCity(addressData) {
