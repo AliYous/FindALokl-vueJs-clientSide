@@ -15,7 +15,7 @@
 							About this project
 						</v-btn>
 
-						<v-btn text v-if="isLoggedIn" class="btn-logout" @click.prevent="logout, showMobileNav = false">Logout</v-btn>
+						<v-btn text v-if="isLoggedIn" class="btn-logout" @click.prevent="logout">Logout</v-btn>
 
 						<div v-else style="display:flex; justify-content:center;">	
 							<div class="btn-connect-sign">

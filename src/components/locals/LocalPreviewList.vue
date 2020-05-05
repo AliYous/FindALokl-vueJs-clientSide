@@ -42,6 +42,7 @@ export default {
     justify-content: space-around;
     width: 90%;
     height: auto;
+    margin-bottom: 3rem;
   }
   .local-previews-row {
     align-items: center;

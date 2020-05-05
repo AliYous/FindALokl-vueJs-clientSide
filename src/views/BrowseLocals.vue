@@ -61,8 +61,14 @@ export default {
     z-index: 2;
   }
   .top-text {
-    margin-top: 6.5rem;
     text-align: center;
+    background-color: #fff;
+    position: fixed;
+    padding: 1em;
+    width: 100%;
+    left: 50%;
+    top: 14.7rem;
+    transform: translate(-50%, -50%);
     z-index: 1;
   }
   .progress-circle {
@@ -71,5 +77,16 @@ export default {
   }
   .list {
     z-index: 0;
+    margin-top: 6%;
   }
+
+ @media screen and (max-width: 768px) {
+   .list {
+     margin-top: 8rem;
+   }
+   .top-text {
+     top: 14rem;
+   }
+}
+
 </style>

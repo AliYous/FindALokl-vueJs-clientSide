@@ -1,6 +1,6 @@
 <template>
       <div class="main">
-            <v-card raised min-width="45rem" class="main-card" @click.prevent="onPreviewClick(localPreview.local_id)">
+            <v-card raised class="main-card" @click.prevent="onPreviewClick(localPreview.local_id)">
                 <div class="card-horizontal" >
 
                     <div 
@@ -18,7 +18,7 @@
                           <h4 class="price">€ {{localPreview.hourlyRate}}/h</h4>
                       </div>
 
-                      <v-divider style="margin-top: -0.5rem"></v-divider>
+                      <v-divider class="divider" style="margin-top: -0.5rem"></v-divider>
 
                      <!-- Local's quote -->
                       <div class="quote-row container" style="height: 5rem">
@@ -28,7 +28,7 @@
                       </div>     
                       <!--  -->
 
-                      <v-divider></v-divider>
+                      <v-divider class="divider"></v-divider>
 
                     </div>
                 </div>
@@ -71,7 +71,6 @@ export default {
   }
   .card-body {
     width: 30rem;
-    /* width: 39rem; */
     padding-top: 0.3rem;
     padding-bottom: 0;
   }
@@ -115,5 +114,43 @@ export default {
     left: 2.1rem;
   }
 
+  @media screen and (max-width: 768px) {
+      .main-card {
+        width: 20rem;
+      }
+     .card-horizontal {
+        display: flex;
+        flex-direction: column;
+      }
+      .imagePreviewWrapper {
+        width: 307px;
+        height: 307px;
+        display: block;
+        margin: 0 auto 0;
+        background-size: cover;
+        background-position: center center;
+      }
+      .card-body {
+        width: auto;
+      }
+      .quote-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: -3rem; */
+      }
+      .opening-quote {
+        top:-2rem;
+        left: 0rem;
+      }
+      .closing-quote {
+        top: 1rem;
+        left: -0.2rem;
+      }
+      .divider {
+        display: none;
+      }
+  }
 
 </style>

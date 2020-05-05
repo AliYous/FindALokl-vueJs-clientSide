@@ -1,6 +1,6 @@
 <template>
       <div class="main">
-            <v-card raised min-width="100%" class="main-card">
+            <v-card raised class="main-card">
                 <div class="card-horizontal" >
                   
                     <div 
@@ -120,6 +120,45 @@ export default {
   .closing-quote {
     top: 2rem;
     left: 3.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+      .main-card {
+        width: 20rem;
+      }
+     .card-horizontal {
+        display: flex;
+        flex-direction: column;
+      }
+      .imagePreviewWrapper {
+        width: 320px;
+        height: 320px;
+        display: block;
+        margin: 0 auto 0;
+        background-size: cover;
+        background-position: center center;
+      }
+      .card-body {
+        width: auto;
+      }
+      .quote-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: -3rem; */
+      }
+      .opening-quote {
+        top:-2rem;
+        left: 0rem;
+      }
+      .closing-quote {
+        top: 1rem;
+        left: -0.2rem;
+      }
+      .divider {
+        display: none;
+      }
   }
 
 
