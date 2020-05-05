@@ -2,8 +2,10 @@
     <div :class="{'container-header-minified': minify}" class="container-header">
       <!--  Image css  -->
       <div class="header-search">
-        <h2 v-if="!minify">Find a Lokl</h2>
-        <h3 v-if="!minify">To show you around</h3>
+        <div class="text-header">
+          <h2 v-if="!minify">Find a Lokl</h2>
+          <h3 v-if="!minify">To show you around</h3>
+        </div>
         <TheSearchBar :citySearched="citySearched" />
       </div>
     </div>
@@ -54,13 +56,20 @@ export default {
         top: 4.7rem;
   }
   .header-search {
-      width: 20%;
+      width: 38rem;
       color: white;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-content: center;
+      align-items: center;
       text-align:left;
       font-weight: bold;
+  }
+  .text-header {
+    text-align: left;
+    width: 100%;
+
   }
   h2 {
       font-family: 'Poppins:ital';
@@ -70,6 +79,22 @@ export default {
    @media screen and (max-width: 768px) {
     .container-header {
       height: 25rem;
+      width: 100%;
+    }
+    .header-search {
+      width: 23rem;
+    }
+    .container-header-minified {
+      position: fixed;
+      width: 100%;
+      height: 8rem;
+      background-image: url("../assets/header-img4-dark.jpg");
+      background-size: cover;
+      background-position-y: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 4rem;
     }
   }
 </style>

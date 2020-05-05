@@ -16,8 +16,7 @@
         <v-btn 
             color="#F38633" 
             class="search-btn" 
-            x-large 
-            height="56px"
+            height="3.45rem"
             dark 
             rounded
             :loading="loading"
@@ -62,19 +61,37 @@ export default {
 
 <style scoped>
 .search-container {
-    display: flex;
-    width: 200%;
+    padding-left: 6.5rem;
 }
 .autocomplete-bar {
     margin: 0 0 0 -2rem;
     padding: 0 0 0 2.5rem;
     border-radius: 30px;
+    min-width: 33rem;
 }
 .autocomplete-bar:focus {
     border: 1px solid #493E92 !important;
 }
 .search-btn {
   right: 15%;
+}
+
+ @media screen and (max-width: 768px) {
+    .search-container {
+        display: flex;
+    }
+    .autocomplete-bar {
+        min-width: 14rem;
+        border-radius: 18px;
+        min-height: 3rem;
+    }
+    .search-container {
+        padding-left: 3rem;
+    }
+    .search-btn {
+        right: 15%;
+        max-height:  3rem;
+    }
 }
 
 </style>

@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <!-- Header nav component  -->
-    <!-- <div class="fixed-header"> -->
+    <div class="header">
       <TheHeaderNavbar/>
-    <!-- </div> -->
+    </div>
     
     <v-content class="content-container">
       <!-- <AllComponents/> -->
@@ -35,18 +35,15 @@ export default {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins';
-  }
-
-  .fixed-header {
-    position: fixed;
-    display: flex;
-    justify-content: space-around;
-    z-index: 5;
-    width: 100%;
+    max-width: 100%;
   }
 
   .content-container {
     margin-top: 6.5vh;
     z-index: 0;
+    overflow-x: hidden;
   }
+  /* .header {
+    overflow-x: hidden;
+  } */
 </style>
