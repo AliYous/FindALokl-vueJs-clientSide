@@ -22,6 +22,7 @@ if (token) {
 // bus used to emit to the auth dialog from TheHeaderNavbar
 export const bus = new Vue()
 
+
 new Vue({
   router,
   store,

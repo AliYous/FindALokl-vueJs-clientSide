@@ -15,7 +15,8 @@
                               <h5 class="local-name">{{ local.name }}</h5>
                               <h6 class="city-name">{{ local.localCity }}</h6>
                           </div>
-                          <h4 class="price">€ {{local.hourlyRate}}/h</h4>
+                          <h4 v-if="local.hourlyRate > 0" class="price">€ {{local.hourlyRate}}/h</h4>
+                          <h4 v-if="local.hourlyRate == 0" class="price">Free</h4>
                       </div>
 
                       <v-divider style="margin-top:-0.5rem;" ></v-divider>
@@ -48,29 +49,33 @@
                         </div>
                       </div>
 
-                      <v-btn
+                      <!-- <v-btn
                         color="#F38633"
                         block
                         dark      
-                        style="margin-bottom: 1rem"      
+                        style="margin-bottom: 1rem"   
                       >
                         Contact {{local.name}} 
-                      </v-btn>
+                      </v-btn> -->
+                      <MessageCreateDialog :localName="local.name" :btnBlock="false"/>
                     </div>
                 </div>
                 
             </v-card>
+
        </div>
 </template>
 
 <script>
 import StarRating from 'vue-star-rating'
+import MessageCreateDialog from '../messages/MessageCreateDialog'
 
 export default {
     name: 'LocalProfileHeader',
     props: ['local'],
     components: {
-      StarRating
+      StarRating,
+      MessageCreateDialog
     },
     data() {
       return {

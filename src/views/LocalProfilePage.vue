@@ -57,18 +57,14 @@
 							:isLanguages="true"
 						/>
           <v-divider style="margin-top: 1rem"></v-divider>
-
-        <v-btn
-            color="#F38633"
-            class="cta-hidden"
-            block
-            dark      
-            style="margin-bottom: 1rem"      
-            >
-            Contact {{local.name}} 
-        </v-btn>
+        <!-- Only on mobile -->
+        <MessageCreateDialog class="cta-hidden" style="margin-bottom: 1rem" :localName="local.name" :btnBlock="true"/>
 
       </div>
+
+      <ReviewList :local="local" />
+
+     
 
   </div>
 </template>
@@ -76,7 +72,8 @@
 <script>
 import LocalProfileHeader from '../components/locals/LocalProfileHeader';
 import LocalProfileAttribute from '../components/locals/LocalProfileAttribute';
-
+import ReviewList from '../components/reviews/ReviewList';
+import MessageCreateDialog from '../components/messages/MessageCreateDialog'
 import axios from 'axios';
 
 export default {
@@ -84,7 +81,9 @@ export default {
     props: ['local_id'],
     components: {
 				LocalProfileHeader,
-				LocalProfileAttribute
+                LocalProfileAttribute,
+                ReviewList,
+                MessageCreateDialog
     },
     data() {
         return {
@@ -127,6 +126,8 @@ export default {
     .cta-hidden {
         display: none;
     }
+
+   
 
     @media screen and (max-width: 768px) {
         .profile-content {
