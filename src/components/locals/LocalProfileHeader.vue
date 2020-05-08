@@ -18,7 +18,7 @@
                           <h4 class="price">€ {{local.hourlyRate}}/h</h4>
                       </div>
 
-                      <v-divider ></v-divider>
+                      <v-divider style="margin-top:-0.5rem;" ></v-divider>
 
                       <!-- Local's quote -->
                       <div class="quote-row container" style="height: 5rem">
@@ -27,8 +27,26 @@
                         <v-icon class="closing-quote">mdi-format-quote-close</v-icon>
                       </div>     
                       <!--  -->
-
                       <v-divider ></v-divider>
+
+                      <div class="rating-row container">
+                        <div class="rating-col">
+                          <h6>Reviews</h6>
+                          <h5>{{ local.numberOfReviews }}</h5>
+                        </div>
+                        <div class="rating-col">
+                          <h6>Rating</h6>
+                          <star-rating 
+                            v-model="rating"
+                            :read-only="true"
+                            :show-rating="false"
+                            :increment="0.5"
+                            :star-size="22"
+                            active-color="#F38633"
+                            :rounded-corners="true"
+                          ></star-rating>
+                        </div>
+                      </div>
 
                       <v-btn
                         color="#F38633"
@@ -46,9 +64,22 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
+
 export default {
     name: 'LocalProfileHeader',
-    props: ['local']
+    props: ['local'],
+    components: {
+      StarRating
+    },
+    data() {
+      return {
+        rating: 0,
+      }
+    },
+    created() {
+      this.rating = this.$props.local.avgRating
+    }
 
 }
 </script>
@@ -108,23 +139,45 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: -1rem;
+    margin-bottom: -1rem;
   }
   .card-text {
     width:80%;
     text-align: center;
   }
   .opening-quote {
-    top:-2rem;
-    left: -3.5rem;
+    top:-1.6rem;
+    left: -2rem;
   }
   .closing-quote {
-    top: 2rem;
-    left: 3.5rem;
+    top: 1.6rem;
+    left: 2rem;
+  }
+
+  .rating-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+  }
+  .rating-col {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    color: #A3A3A3;
+  }
+  .review-number {
+    color: #999999;
   }
 
   @media screen and (max-width: 768px) {
       .main-card {
         width: 20rem;
+        margin-bottom: 1rem;
       }
      .card-horizontal {
         display: flex;

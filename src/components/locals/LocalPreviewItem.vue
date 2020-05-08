@@ -18,7 +18,7 @@
                           <h4 class="price">€ {{localPreview.hourlyRate}}/h</h4>
                       </div>
 
-                      <v-divider class="divider" style="margin-top: -0.5rem"></v-divider>
+                      <!-- <v-divider class="divider" style="margin-top: -0.5rem"></v-divider> -->
 
                      <!-- Local's quote -->
                       <div class="quote-row container" style="height: 5rem">
@@ -28,7 +28,26 @@
                       </div>     
                       <!--  -->
 
-                      <v-divider class="divider"></v-divider>
+                      <!-- <v-divider class="divider"></v-divider> -->
+
+                      <div class="rating-row container">
+                        <div class="rating-col">
+                          <h6>Reviews</h6>
+                          <h5>{{localPreview.numberOfReviews}}</h5>
+                        </div>
+                        <div class="rating-col">
+                          <h6>Rating</h6>
+                          <star-rating 
+                            v-model="rating"
+                            :read-only="true"
+                            :show-rating="false"
+                            :increment="0.5"
+                            :star-size="22"
+                            active-color="#F38633"
+                            :rounded-corners="true"
+                          ></star-rating>
+                        </div>
+                      </div>
 
                     </div>
                 </div>
@@ -38,10 +57,23 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
 
 export default {
   name: 'LocalPreviewItem',
   props: ['localPreview'],
+  components: {
+    StarRating
+  },
+  data() {
+    return {
+      rating: 0
+    }
+  },
+  created() {
+    this.rating = this.$props.localPreview.avgRating
+    console.log(this.rating)
+  },
   methods: {
     onPreviewClick(local_id) {
       this.$router.push({name : "LocalProfilePage", params: {local_id: local_id} });
@@ -62,8 +94,8 @@ export default {
     cursor: pointer;
   }
   .imagePreviewWrapper {
-    width: 200px;
-    height: 200px;
+    width: 223.61px;
+    height: 223.61px;
     display: block;
     margin: 0 auto 0;
     background-size: cover;
@@ -100,19 +132,40 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: -0.6rem;
+    /* margin-bottom: -1rem; */
   }
   .card-text {
     width:80%;
     text-align: center;
+    font-size: 15px;
   }
   .opening-quote {
     top:-2rem;
-    left: -2.1rem;
+    left: -1rem;
   }
   .closing-quote {
     top: 2rem;
-    left: 2.1rem;
+    left: 1rem;
   }
+
+  .rating-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .rating-col {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    color: #A3A3A3;
+  }
+  .review-number {
+    color: #999999;
+  }
+
 
   @media screen and (max-width: 768px) {
       .main-card {
@@ -123,8 +176,8 @@ export default {
         flex-direction: column;
       }
       .imagePreviewWrapper {
-        width: 307px;
-        height: 307px;
+        width: 320px;
+        height: 320px;
         display: block;
         margin: 0 auto 0;
         background-size: cover;
