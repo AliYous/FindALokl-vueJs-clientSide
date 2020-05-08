@@ -32,18 +32,18 @@
                       <div class="rating-row container">
                         <div class="rating-col">
                           <h6>Reviews</h6>
-                          <h5>5</h5>
+                          <h5>{{ local.numberOfReviews }}</h5>
                         </div>
                         <div class="rating-col">
                           <h6>Rating</h6>
                           <star-rating 
                             v-model="rating"
-                            read-only="true"
+                            :read-only="true"
                             :show-rating="false"
-                            increment="0.5"
-                            star-size="22"
+                            :increment="0.5"
+                            :star-size="22"
                             active-color="#F38633"
-                            rounded-corners="true"
+                            :rounded-corners="true"
                           ></star-rating>
                         </div>
                       </div>
@@ -74,8 +74,11 @@ export default {
     },
     data() {
       return {
-        rating: 4.4
+        rating: 0,
       }
+    },
+    created() {
+      this.rating = this.$props.local.avgRating
     }
 
 }
