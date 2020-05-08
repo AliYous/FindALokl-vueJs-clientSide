@@ -37,7 +37,15 @@
                         </div>
                         <div class="rating-col">
                           <h6>Rating</h6>
-                          <h5>5 stars</h5>
+                          <star-rating 
+                            v-model="rating"
+                            read-only="true"
+                            :show-rating="false"
+                            increment="0.5"
+                            star-size="22"
+                            active-color="#F38633"
+                            rounded-corners="true"
+                          ></star-rating>
                         </div>
                       </div>
 
@@ -49,10 +57,19 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
 
 export default {
   name: 'LocalPreviewItem',
   props: ['localPreview'],
+  components: {
+    StarRating
+  },
+  data() {
+    return {
+      rating: 4
+    }
+  },
   methods: {
     onPreviewClick(local_id) {
       this.$router.push({name : "LocalProfilePage", params: {local_id: local_id} });
@@ -73,8 +90,8 @@ export default {
     cursor: pointer;
   }
   .imagePreviewWrapper {
-    width: 200px;
-    height: 200px;
+    width: 223.61px;
+    height: 223.61px;
     display: block;
     margin: 0 auto 0;
     background-size: cover;
@@ -155,8 +172,8 @@ export default {
         flex-direction: column;
       }
       .imagePreviewWrapper {
-        width: 307px;
-        height: 307px;
+        width: 320px;
+        height: 320px;
         display: block;
         margin: 0 auto 0;
         background-size: cover;
