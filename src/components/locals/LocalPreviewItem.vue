@@ -18,7 +18,7 @@
                           <h4 class="price">€ {{localPreview.hourlyRate}}/h</h4>
                       </div>
 
-                      <v-divider class="divider" style="margin-top: -0.5rem"></v-divider>
+                      <!-- <v-divider class="divider" style="margin-top: -0.5rem"></v-divider> -->
 
                      <!-- Local's quote -->
                       <div class="quote-row container" style="height: 5rem">
@@ -28,7 +28,18 @@
                       </div>     
                       <!--  -->
 
-                      <v-divider class="divider"></v-divider>
+                      <!-- <v-divider class="divider"></v-divider> -->
+
+                      <div class="rating-row container">
+                        <div class="rating-col">
+                          <h6>Reviews</h6>
+                          <h5>5</h5>
+                        </div>
+                        <div class="rating-col">
+                          <h6>Rating</h6>
+                          <h5>5 stars</h5>
+                        </div>
+                      </div>
 
                     </div>
                 </div>
@@ -100,19 +111,40 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: -0.6rem;
+    /* margin-bottom: -1rem; */
   }
   .card-text {
     width:80%;
     text-align: center;
+    font-size: 15px;
   }
   .opening-quote {
     top:-2rem;
-    left: -2.1rem;
+    left: -1rem;
   }
   .closing-quote {
     top: 2rem;
-    left: 2.1rem;
+    left: 1rem;
   }
+
+  .rating-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .rating-col {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    color: #A3A3A3;
+  }
+  .review-number {
+    color: #999999;
+  }
+
 
   @media screen and (max-width: 768px) {
       .main-card {
