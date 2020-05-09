@@ -12,10 +12,6 @@
             <v-card-title>Adrien Herry</v-card-title>
             <v-card-subtitle>Dernier message de la conversation</v-card-subtitle>
         </v-card>
-        <v-card outlined  class="conversation-item">
-            <v-card-title>Adrien Herry</v-card-title>
-            <v-card-subtitle>Dernier message de la conversation</v-card-subtitle>
-        </v-card>
     </div>
 </template>
 
