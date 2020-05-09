@@ -5,6 +5,7 @@ import BrowseLocals from '../views/BrowseLocals.vue'
 import LocalsLandingPage from '../views/LocalsLandingPage'
 import LocalProfileEdit from '../views/LocalProfileEdit'
 import LocalProfilePage from '../views/LocalProfilePage'
+import Conversations from '../views/Conversations'
 
 
 
@@ -38,6 +39,13 @@ Vue.use(VueRouter)
     path: '/local/profile/:local_id',
     name: 'LocalProfilePage',
     component: LocalProfilePage,
+    props: true
+  },
+  {
+    // path: '/user/:user_id/conversations',
+    path: '/conversations',
+    name: 'Conversations',
+    component: Conversations,
     props: true
   }
 ]

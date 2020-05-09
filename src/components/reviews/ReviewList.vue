@@ -17,7 +17,6 @@ export default {
     components: {
         ReviewItem
     }
-
 }
 </script>
 
@@ -30,6 +29,4 @@ export default {
         display: flex;
         flex-direction: column;
     }
-
-
 </style>
