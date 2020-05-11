@@ -74,7 +74,7 @@ import LocalProfileHeader from '../components/locals/LocalProfileHeader';
 import LocalProfileAttribute from '../components/locals/LocalProfileAttribute';
 import ReviewList from '../components/reviews/ReviewList';
 import MessageCreateDialog from '../components/messages/MessageCreateDialog'
-import axios from 'axios';
+import axios from '@/axios';
 
 export default {
     name: 'LocalProfilePage',
@@ -98,7 +98,7 @@ export default {
     methods: {
         fetchLocal(local_id) {
             this.loading = true;
-            axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
+            axios.get(`/locals/id/${local_id}`).then(res => {
                 this.loading = false;
                 this.local = res.data[0];
                 console.log(res.data[0])

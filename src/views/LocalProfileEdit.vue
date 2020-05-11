@@ -111,7 +111,7 @@
 
 <script>
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
-import axios from 'axios';
+import axios from '@/axios';
 import TheImagePreview from '../components/TheImagePreview'
 
 
@@ -145,7 +145,7 @@ export default {
     },
     methods: {
       async setLocal(local_id) {
-        await axios.get(`http://localhost:3000/api/locals/id/${local_id}`).then(res => {
+        await axios.get(`/locals/id/${local_id}`).then(res => {
             const local = res.data[0]
             this.form._id = local._id
             this.form.user_id = local.user_id
@@ -175,7 +175,7 @@ export default {
 
 
         try {
-          await axios.put(`http://localhost:3000/api/locals/id/${this.local_id}/update`, data).then(res => {
+          await axios.put(`/locals/id/${this.local_id}/update`, data).then(res => {
               console.log(res.data);
           });
         } catch(err) {

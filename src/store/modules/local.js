@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import axios from '@/axios';
 
   const state = {
     citySearched: '',
@@ -13,7 +12,7 @@ import axios from 'axios'
 
   const actions = {
     async fetchLocalPreviews({ commit }, city) {
-        await axios.get(`http://localhost:3000/api/locals/previews/city/${city}`).then(res => {
+        await axios.get(`/locals/previews/city/${city}`).then(res => {
             let localPreviewsArray = [];
             Object.entries(res.data).forEach((entry) => {
                 localPreviewsArray.push(entry[1]);

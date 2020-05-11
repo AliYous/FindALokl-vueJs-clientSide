@@ -69,7 +69,7 @@
 <script>
 	import {bus} from '../main';
 	import { mapActions } from 'vuex';
-	import axios from 'axios';
+	import axios from '@/axios';
 
 	export default {
 		name: 'TheAuthDialog',
@@ -108,7 +108,7 @@
 					// Redirect user to Profile Edit page if he is a local and it is the first time he visits (or he never modified his profile)
 					if(user.isLocal && user.firstTimeVisit) {
 						// We fetch the local id to redirect him to his page edit
-						await axios.get(`http://localhost:3000/api/locals/user_id/${user._id}`).then(res => {
+						await axios.get(`/locals/user_id/${user._id}`).then(res => {
 							this.$router.push({ name: 'LocalProfileEdit', params: { local_id: res.data[0]._id } });
 						})		
 					}

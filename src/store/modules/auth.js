@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from '@/axios';
 
 Vue.use(Vuex)
 
@@ -18,7 +18,7 @@ export default {
   actions: {
     async login({ commit }, user) {
       commit('auth_request')
-      const resp = await axios.post('http://localhost:3000/api/user/login', user )
+      const resp = await axios.post('/user/login', user )
       const token = resp.data
       user = resp.data.user
       localStorage.setItem('token', token)
@@ -28,7 +28,7 @@ export default {
     },
     async register({ commit }, user) {
       commit('auth_request')
-      const resp = await axios.post('http://localhost:3000/api/user/register', user )
+      const resp = await axios.post('/user/register', user )
       console.log(resp)
     },
     logout({ commit }) {
