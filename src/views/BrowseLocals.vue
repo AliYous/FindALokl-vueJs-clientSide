@@ -5,7 +5,7 @@
     </div>
 
     <div class="top-text">
-      <h4> Explore <u>{{ lastSearchInput }}</u>, with one of 722 Locals </h4>
+      <h4> Explore <u>{{ lastSearchInput }}</u>, with a Local! </h4>
     </div>
 
     <div v-if="loading" class="progress-circle container">

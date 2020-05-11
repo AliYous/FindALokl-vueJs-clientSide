@@ -44,16 +44,16 @@ export default {
     background-position-y: 80%;
   } 
   .container-header-minified {
-        position: fixed;
-        width: 100%;
-        height: 8rem;
-        background-image: url("../assets/header-img4-dark.jpg");
-        background-size: cover;
-        background-position-y: 70%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 4.7rem;
+      position: fixed;
+      width: 100%;
+      height: 8rem;
+      background-image: url("../assets/header-img4-dark.jpg");
+      background-size: cover;
+      background-position-y: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 4.7rem;
   }
   .header-search {
       width: 38rem;

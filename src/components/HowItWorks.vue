@@ -12,15 +12,15 @@
         
         <div class="steps">
             <div class="individual-step">
-                <img src="../assets/search.svg" alt="">
+                <img src="../assets/lime-searching.png" alt="">
                 <h5 class="margin-top">Browse locals. Find the one you like</h5>
             </div>
             <div class="individual-step">
-                <img src="../assets/discuss.svg" alt="">
+                <img src="../assets/discuss.jpg" alt="">
                 <h5>Plan and discuss activities before you meet</h5>
             </div>
             <div class="individual-step">
-                <img src="../assets/enjoy.svg" alt="">
+                <img src="../assets/clip-travel.png" alt="">
                 <h5 class="margin-top">Witness the city through the eyes of a local</h5>
             </div>
         </div>

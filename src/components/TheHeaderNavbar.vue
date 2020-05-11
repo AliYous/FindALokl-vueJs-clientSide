@@ -11,9 +11,9 @@
 					<v-spacer></v-spacer>
 
 					<div class="nav-links" :class="{ active: showMobileNav }">
-						<v-btn class="about-btn" text @click.prevent="showMobileNav = false">
+						<!-- <v-btn class="about-btn" text @click.prevent="showMobileNav = false">
 							About this project
-						</v-btn>
+						</v-btn> -->
 
 						<v-btn text v-if="isLoggedIn" class="btn-logout" @click.prevent="logout">Logout</v-btn>
 
@@ -108,7 +108,8 @@ export default {
 	.nav-links {
 		display: flex;
 		justify-content: space-around;
-		min-width: 50%;
+		min-width: 40%;
+		margin-right: -9rem;
 	}
 	
 	.btn-connect-sign {
@@ -151,6 +152,7 @@ export default {
 			right: 0px;
 			height: 110vh;
 			top: 6.5vh;
+			margin-right: 0rem;
 			background-color: #FFFFFF;
 			display: flex;
 			flex-direction: column;

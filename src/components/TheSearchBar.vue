@@ -11,7 +11,7 @@
             types="(cities)"
             v-on:placechanged="getCity"
         >
-        </vue-google-autocomplete> -->
+        </vue-google-autocomplete> 
         
         <v-btn 
             color="#F38633" 
