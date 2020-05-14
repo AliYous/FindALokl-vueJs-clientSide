@@ -5,7 +5,7 @@
         color="#F38633"
         dark
         :block="btnBlock"
-        style="margin-left: 2rem"
+        style="margin-left: 2rem; margin-bottom:1rem"
         @click.stop="dialog = true"
       >
         Contact {{localName}}
