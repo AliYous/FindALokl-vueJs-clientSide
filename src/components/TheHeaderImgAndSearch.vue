@@ -65,6 +65,7 @@ export default {
       align-items: center;
       text-align:left;
       font-weight: bold;
+      margin-top: 3rem;
   }
   .text-header {
     text-align: left;
@@ -83,6 +84,7 @@ export default {
     }
     .header-search {
       width: 23rem;
+      margin-top: 3rem;
     }
     .container-header-minified {
       position: fixed;
@@ -95,6 +97,7 @@ export default {
       justify-content: center;
       align-items: center;
       top: 4rem;
+      margin-bottom: 3rem;
     }
   }
 </style>

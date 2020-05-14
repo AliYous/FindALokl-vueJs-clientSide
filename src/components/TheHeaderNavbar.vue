@@ -114,8 +114,9 @@ export default {
 	
 	.btn-connect-sign {
 		display: flex;
-		justify-content: space-between;
-		width: 20rem;
+		justify-content: space-around;
+		width: 22rem;
+		margin-right: 9rem;
 	}
 	.btn-connect {
 		right: 1rem;
@@ -177,6 +178,7 @@ export default {
 			width: 60%;
 			height: 5.4rem;
 			color: #FFFFFF;
+			margin-right: 0rem;
 		}
 		.btn-connect {
 			color: #FFFFFF;
