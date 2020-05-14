@@ -32,8 +32,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 25rem;
-    height: 30rem;
+    /* height: 30rem; */
     width: 100%;
   }
   
@@ -42,8 +41,8 @@ export default {
       height: 25rem;
     }
 
-    .how-it-works-container {
+    /* .how-it-works-container {
       display: none;
-    }
+    } */
   }
 </style>
