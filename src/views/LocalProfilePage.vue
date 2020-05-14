@@ -7,45 +7,46 @@
           <h3 class="explore-city-title">Explore <u>{{ local.localCity }}</u> with {{ local.name }} </h3>
 					
 					<!-- I will show you -->
-          <v-divider style="margin-top: 1rem"></v-divider>
+                        <v-divider style="margin-top: 1rem"></v-divider>
 
 						<LocalProfileAttribute 
-                            v-if="!readMoreActivated"
+                            v-if="!readMoreTourDesc"
 							:attributeName="'I will show you'" 
 							:attributeContent="local.tourDescription.slice(0, 150)" 
 							:isLanguages="false"
 						/>
                         <LocalProfileAttribute 
-                            v-if="readMoreActivated"
+                            v-if="readMoreTourDesc"
 							:attributeName="'I will show you'" 
 							:attributeContent="local.tourDescription" 
 							:isLanguages="false"
 						/>
-                        <a v-if="!readMoreActivated" @click="updateReadMoreActivated" href="#">
+                        <a v-if="!readMoreTourDesc" @click="updateReadMoreActivated('tourDesc')" href="#" class="read-more-link">
                             Read more...
                         </a>
-                        <a v-if="readMoreActivated" @click="updateReadMoreActivated" href="#">
+                        <a v-if="readMoreTourDesc" @click="updateReadMoreActivated('tourDesc')" href="#" class="read-more-link">
                             Read less
                         </a>
-          <v-divider style="margin-top: 1rem"></v-divider>
+                        
+                        <v-divider style="margin-top: 1rem"></v-divider>
 
 					<!-- About Me -->
 						<LocalProfileAttribute 
-                            v-if="!readMoreActivated"
+                            v-if="!readMoreAbout"
 							:attributeName="'About me'" 
 							:attributeContent="local.aboutMe.slice(0, 150)" 
 							:isLanguages="false"
 						/>
                         <LocalProfileAttribute 
-                            v-if="readMoreActivated"
+                            v-if="readMoreAbout"
 							:attributeName="'About me'" 
 							:attributeContent="local.aboutMe" 
 							:isLanguages="false"
 						/>
-                        <a v-if="!readMoreActivated" @click="updateReadMoreActivated" href="#">
+                        <a v-if="!readMoreAbout" @click="updateReadMoreActivated('about')" href="#" class="read-more-link">
                             Read more...
                         </a>
-                        <a v-if="readMoreActivated" @click="updateReadMoreActivated" href="#">
+                        <a v-if="readMoreAbout" @click="updateReadMoreActivated('about')" href="#" class="read-more-link">
                             Read less
                         </a>
           <v-divider style="margin-top: 1rem"></v-divider>
@@ -89,7 +90,8 @@ export default {
         return {
             loading: false,
             local: null,
-            readMoreActivated: false
+            readMoreTourDesc: false,
+            readMoreAbout: false
         }
     },
     created() {
@@ -104,8 +106,9 @@ export default {
                 console.log(res.data[0])
             })
         },
-        updateReadMoreActivated() {
-            this.readMoreActivated = !this.readMoreActivated;
+        updateReadMoreActivated(attribute) {
+            if (attribute === 'about') { this.readMoreAbout = !this.readMoreAbout; }
+            else if (attribute === 'tourDesc') { this.readMoreTourDesc = !this.readMoreTourDesc; }
         }
     }
 }
@@ -125,6 +128,10 @@ export default {
     }
     .cta-hidden {
         display: none;
+    }
+    .read-more-link {
+        margin-left: 20rem;
+        margin-top: -1rem;
     }
 
    

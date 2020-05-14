@@ -6,7 +6,7 @@
 			<!-- Regular attribute -->
 			<div v-if="!isLanguages" class="attribute-value">
 					<p style="width: 95%;">
-						{{attributeContent}}
+						{{attributeContent}}. . . . 
 					</p>
 			</div>
 
